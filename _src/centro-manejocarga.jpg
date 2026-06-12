@@ -1,0 +1,222 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Maquinarias Mega</title>
+
+<meta name="description" content="Distribuidor autorizado Komatsu en Venezuela. Distribuidor exclusivo Palfinger. Distribuidor ETI y Haulotte. Venta de repuestos, Servicio Técnico, Taller Especializado para Excavadoras, Camiones, Motoniveladoras, Tractores, Cargadores, Retro Excavadoras, Grúas, Plataformas y Montacargas. Alquiler de maquinaria. Venta de Maquinaria"/>
+
+<meta name="keywords" content="Maquinarias, equipos, repuestos, camiones articulados, camiones rígidos, excavadoras hidráulicas, motoniveladoras, tractores con neumáticos, tractores de oruga, cargadores frontales, retro-excavadoras, grúas articuladas, montacargas eléctricos, montacargas de construcción, Komatsu Venezuela, Palfinger Venezuela, Haulotte Venezuela, ETI Venezuela, Minería, Construcción, Manejo de carga, Maquinaria pesada, Maquinaria de Construcción, Maquinaría de Minería"/>
+
+<meta name="abstract" content="Página principal Maquinarias Mega Venezuela."/>
+
+<meta name="url" content="http://www.mega-ca.com"/>
+
+<meta name="robots" content="all">
+
+<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="images/frontEnd/logoMega.ico" >
+
+<script src="js/html5shiv.js"></script> <!-- Para que html5 sea compatible con navegadores viejos -->
+<script type="text/javascript" src="jsFrontEnd/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jsFrontEnd/jquery.nivo.slider.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() { 
+		// Get the modal
+		/*var modal = document.getElementById('myModal');
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById('myImg');
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+		
+		img.onclick = function(){
+			modal.style.display = "block";
+			modalImg.src = this.src;
+			captionText.innerHTML = this.alt;
+		}
+		modal.style.display = "block";
+		modalImg.src = img.src;
+		//captionText.innerHTML = img.alt;
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}*/
+		
+		$('#slider').nivoSlider();
+	})
+</script>
+<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>--> <!--Para tener firebug en explorer -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40529953-1', 'mega-ca.com');
+  ga('send', 'pageview');
+
+</script>
+<style>
+/* Style the Image Used to Trigger the Modal */
+	#myImg {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	#myImg:hover {opacity: 0.7;}
+
+	/* The Modal (background) */
+	.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		padding-top: 100px; /* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+		z-index: 100;
+	}
+
+	/* Modal Content (Image) */
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 70%;
+		max-width: 550px;
+	}
+
+	/* Caption of Modal Image (Image Text) - Same Width as the Image */
+	#caption {
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 700px;
+		text-align: center;
+		color: #ccc;
+		padding: 10px 0;
+		height: 150px;
+	}
+
+	/* Add Animation - Zoom in the Modal */
+	.modal-content, #caption {
+		-webkit-animation-name: zoom;
+		-webkit-animation-duration: 0.6s;
+		animation-name: zoom;
+		animation-duration: 0.6s;
+	}
+
+	@-webkit-keyframes zoom {
+		from {-webkit-transform:scale(0)}
+		to {-webkit-transform:scale(1)}
+	}
+
+	@keyframes zoom {
+		from {transform:scale(0)}
+		to {transform:scale(1)}
+	}
+
+	/* The Close Button */
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	/* 100% Image Width on Smaller Screens */
+	@media only screen and (max-width: 550px){
+		.modal-content {
+			width: 70%;
+		} 
+</style>
+</head>
+<body>
+<!-- The Modal -->
+<img id="myImg" src="images/Mega---Seguimos-en-contacto.jpg" alt="Seguimos en contacto" width="700px" height="900px" style="display:none">
+<div id="myModal" class="modal">
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01" >
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
+
+<header>
+	<ul>
+      <li id="liFirst"><img name="Untitled3_r1_c1" src="images/frontEnd/megaHome.jpg" width="347" height="79" id="Untitled3_r1_c1" alt="" /></li>
+      <li><a href="index.php" class="linkMenu"  style="color:#F90;" >Inicio</a></li>
+      <li class="separadorMenu"><img name="menuSeparador" src="images/frontEnd/separadorMenu.jpg" width="2" height="79"  /></li>
+      <li><a href="quienes-somos.php" class="linkMenu"  >Qui&eacute;nes somos</a></li>
+      <li class="separadorMenu"><img name="menuSeparador" src="images/frontEnd/separadorMenu.jpg" width="2" height="79" /></li>
+      <li><a href="division-comercial.php" class="linkMenu" >Divisi&oacute;n comercial</a></li>
+      <li class="separadorMenu"><img name="menuSeparador" src="images/frontEnd/separadorMenu.jpg" width="2" height="79"  /></li>
+      <li><a href="soluciones.php" class="linkMenu" >Soluciones</a></li>
+      <li class="separadorMenu"><img name="menuSeparador" src="images/frontEnd/separadorMenu.jpg" width="2" height="79"  /></li>
+      <li><a href="repuestos.php" class="linkMenu" >Repuestos</a></li>
+      <li class="separadorMenu"><img name="menuSeparador" src="images/frontEnd/separadorMenu.jpg" width="2" height="79" /></li>
+      <li><a href="atencion-al-cliente.php" class="linkMenu" >Atenci&oacute;n al cliente</a></li>
+      <li id="liLast"><img src="images/frontEnd/menuFin.jpg" width="55" height="79" alt="" /></li>
+   </ul>
+</header><section class="sectionIndex">
+     <div id="wrapper">
+        <div class="slider-wrapper theme-default">
+          <div id="slider" class="nivoSlider"> 
+           <a href="#"><img src="images/frontEnd/home/01.png" data-thumb="images/frontEnd/home/01.png" alt="Construcción y Minería Komatsu" /></a>
+			<a href="#"><img src="images/frontEnd/home/02.png" data-thumb="images/frontEnd/home/02.png" alt="Construcción y Minería Komatsu" /></a>
+			<a href="#"><img src="images/frontEnd/home/03.png" data-thumb="images/frontEnd/home/03.png" alt="Elevación y Manejo de carga Demag" /></a>
+			<a href="#"><img src="images/frontEnd/home/04.png" data-thumb="images/frontEnd/home/04.png" alt="Construcción y Minería Komatsu" /></a>
+			<a href="#"><img src="images/frontEnd/home/05.png" data-thumb="images/frontEnd/home/05.png" alt="Saneamiento ambiental Zoomilion" /></a>
+			<a href="#"><img src="images/frontEnd/home/06.png" data-thumb="images/frontEnd/home/06.png" alt="Elevación y Manejo de carga Dieci" /></a>
+			<a href="#"><img src="images/frontEnd/home/07.png" data-thumb="images/frontEnd/home/07.png" alt="Construcción y Minería Komatsu" /></a>
+			<a href="#"><img src="images/frontEnd/home/08.png" data-thumb="images/frontEnd/home/08.png" alt="Construcción y Minería Komatsu" /></a>
+			<a href="#"><img src="images/frontEnd/home/09.png" data-thumb="images/frontEnd/home/09.png" alt="Construcción y Minería P&H" /></a>
+          </div>
+          <p>&nbsp;</p>
+       </div>
+  </div>
+</section>
+<nav class="navIndex">
+  <ul>
+    <li> <a href="division-producto.php?d=mineria"><img src="images/frontEnd/buttonMineria.jpg"  alt="Mineria" /></a></li>
+    <li> <a href="manejo-carga.php"><img src="images/frontEnd/buttonManejoCarga.jpg"  alt="Manejo de Carga" /></a></li>
+    <li> <a href="division-producto.php?d=construccion"><img src="images/frontEnd/buttonConstruccion.jpg"  alt="Construccion" /></a></li>
+  </ul>
+</nav>
+<nav class="logos">
+	<img src="images/frontEnd/barra-lg.png"  alt="Komatsu Venezuela, Haulotte Venezuela, Terex Venezuela, Zoomilion Venezuela, Hensley Venezuela, Joy Venezuela, P&H Venezuela, Fassi Venezuela" />
+   <!-- <ul> -->
+    <!-- <li> <img src="images/frontEnd/logoKomatsu.jpg"  alt="Komatsu Venezuela" /></li> -->
+    <!-- <li> <img src="images/frontEnd/logoPalfinger.jpg"  alt="Palfinger Crane Venezuela" /></li> -->
+    <!-- <li><img src="images/frontEnd/logoHaulotte.jpg"  alt="Haulotte Venezuela" /></li> -->
+    <!-- <li> <img src="images/frontEnd/logoEti.jpg"  alt="ETI Venezuela" /></li> -->
+  <!-- </ul> -->
+</nav>
+<footer style="margin-top:550px; width:1000px;"> 
+ <div class="textoFooter"> © Maquinarias Mega Inc. | Todos los derechos reservados</div>
+</footer>
+</body>
+</html>

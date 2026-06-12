@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maquinarias Mega — Maquinaria Pesada y Minería Inteligente en Venezuela</title>
+<meta name="description" content="Venta, distribución y soporte de maquinaria pesada para construcción, minería y manejo de carga en Venezuela. Marcas líderes, cobertura nacional y respaldo técnico.">
+<meta name="theme-color" content="#1A1D21">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Maquinarias Mega — Minería Inteligente">
+<meta property="og:description" content="Maquinaria pesada de clase mundial con respaldo técnico nacional para construcción, minería y elevación.">
+<meta property="og:locale" content="es_VE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23F26A1B'/%3E%3Ctext x='16' y='24' font-family='Archivo,Arial,sans-serif' font-size='21' font-weight='900' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<!-- WIREFRAME v1 · Handoff Maquinarias Mega · Inspiración ABB / Komatsu -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#F26A1B;        /* acento del logo (HEX por confirmar) */
+    --orange-dark:#D2540C;
+    --carbon:#1A1D21;        /* gris carbón / texto fuerte */
+    --graphite:#2C3137;
+    --gray-700:#4A5158;
+    --gray-400:#9AA3AC;
+    --gray-200:#E4E8EC;
+    --gray-100:#F2F4F6;
+    --white:#FFFFFF;
+    --radius:14px;
+    --maxw:1200px;
+    --shadow:0 10px 30px rgba(26,29,33,.08);
+    --shadow-lg:0 24px 60px rgba(26,29,33,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    color:var(--carbon);background:var(--white);line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.logo,.foot-logo,.section-title,.stat .num{
+    font-family:'Archivo','Manrope',sans-serif;
+  }
+  .hero h1,.section-title,.cta h2{text-wrap:balance}
+  a{text-decoration:none;color:inherit}
+  /* keyboard accessibility */
+  a:focus-visible,button:focus-visible,input:focus-visible,.btn:focus-visible{
+    outline:2.5px solid var(--orange);outline-offset:3px;border-radius:8px;
+  }
+  .skip-link{
+    position:absolute;left:16px;top:-60px;z-index:100;background:var(--carbon);color:#fff;
+    padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem;transition:top .2s ease;
+  }
+  .skip-link:focus{top:16px}
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--orange);margin-bottom:14px;
+  }
+  h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .lead{color:var(--gray-700);font-size:1.05rem;max-width:620px;margin-top:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;
+    padding:13px 24px;border-radius:10px;border:1.5px solid transparent;cursor:pointer;
+    transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+  }
+  .btn-primary{background:var(--orange);color:#fff}
+  .btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(242,106,27,.35)}
+  .btn-ghost{background:transparent;color:var(--carbon);border-color:var(--gray-200)}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+  .btn-light{background:#fff;color:var(--carbon)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn:active{transform:translateY(0) scale(.98)}
+
+  /* ---------- NAVBAR ---------- */
+  header{
+    position:sticky;top:0;z-index:50;padding:14px 16px;background:transparent;
+  }
+  .nav{
+    position:relative;max-width:var(--maxw);margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    height:62px;padding:0 12px 0 22px;
+    background:rgba(255,255,255,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid var(--gray-200);border-radius:999px;box-shadow:0 12px 34px rgba(26,29,33,.12);
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.25rem;letter-spacing:-.02em}
+  .logo .mark{
+    width:34px;height:34px;border-radius:8px;background:var(--orange);
+    display:grid;place-items:center;color:#fff;font-weight:900;font-size:1.1rem;
+  }
+  .logo .mark::after{content:"M"}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--gray-700);position:relative}
+  .nav-links a:hover{color:var(--carbon)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--orange);transition:width .2s}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2px;background:var(--carbon);border-radius:2px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;color:#fff;overflow:hidden;background:var(--carbon)}
+  .hero-bg{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(112deg,rgba(242,106,27,.86) 0%,rgba(210,84,12,.62) 38%,rgba(26,29,33,.94) 100%),
+      repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 2px,transparent 2px 26px),
+      url('assets/img/hero-mineria.jpg') center/cover no-repeat,
+      var(--graphite);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;right:-8%;bottom:-20%;width:60%;height:160%;
+    background:radial-gradient(circle at center,rgba(26,29,33,.55),transparent 60%);
+  }
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:90px 0 100px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.05;letter-spacing:-.03em}
+  .hero h1 .accent{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+  .hero p{margin-top:20px;font-size:1.12rem;color:rgba(255,255,255,.92);max-width:520px}
+  .hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.25);padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:600;margin-bottom:22px}
+  .hero-visual{
+    aspect-ratio:4/3;border-radius:18px;border:1px solid rgba(255,255,255,.25);
+    background:
+      linear-gradient(160deg,rgba(242,106,27,.20),rgba(26,29,33,.55)),
+      url('assets/img/komatsu-930e-camion-minero.jpg') center/cover no-repeat,
+      var(--graphite);
+    box-shadow:var(--shadow-lg);
+  }
+
+  /* ---------- PRODUCT LINES ---------- */
+  section{padding:84px 0}
+  .lines-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(170px,1fr);gap:22px;margin-top:46px}
+  .line-card{
+    background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:28px 24px;
+    display:flex;flex-direction:column;
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  }
+  .line-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+  .line-card.span2{grid-column:span 2}
+  .line-card.feature{
+    grid-column:span 2;grid-row:span 2;justify-content:flex-end;color:#fff;border-color:transparent;
+    background:linear-gradient(155deg,rgba(242,106,27,.42),rgba(26,29,33,.94)),url('assets/img/komatsu-wa1200-cargador.jpg') center/cover no-repeat;
+  }
+  .line-icon{width:52px;height:52px;border-radius:12px;background:rgba(242,106,27,.12);display:grid;place-items:center;margin-bottom:18px}
+  .line-icon svg{width:26px;height:26px;stroke:var(--orange)}
+  .line-card.feature .line-icon{background:rgba(255,255,255,.18)}
+  .line-card.feature .line-icon svg{stroke:#fff}
+  .line-card h3{font-size:1.12rem;font-weight:700;margin-bottom:8px}
+  .line-card.feature h3{font-size:1.7rem;letter-spacing:-.02em}
+  .line-card p{color:var(--gray-700);font-size:.92rem}
+  .line-card.feature p{color:rgba(255,255,255,.88);font-size:1rem;max-width:34ch}
+  .line-card .more{margin-top:auto;padding-top:16px;color:var(--orange);font-weight:600;font-size:.88rem;display:inline-flex;align-items:center;gap:6px}
+  .line-card.feature .more{margin-top:16px;color:#fff}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--gray-100)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:420px}
+  .photo{border-radius:12px;background:var(--graphite) center/cover no-repeat;position:relative;overflow:hidden}
+  .photo:nth-child(1){grid-row:1 / span 2}
+  .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,29,33,.15),rgba(26,29,33,.5))}
+  .about ul.points{margin-top:22px;list-style:none;display:grid;gap:14px}
+  .about ul.points li{display:flex;gap:12px;align-items:flex-start;color:var(--gray-700)}
+  .about ul.points li b{color:var(--carbon)}
+  .check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--orange);display:grid;place-items:center;margin-top:2px}
+  .check svg{width:13px;height:13px;stroke:#fff;stroke-width:3}
+  .brand-bar{margin-top:38px}
+  .brand-bar span.label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400)}
+  .brands{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+  .brand-chip{padding:12px 22px;background:#fff;border:1px solid var(--gray-200);border-radius:8px;font-weight:800;letter-spacing:.02em;color:var(--graphite)}
+  .brand-note{margin-top:12px;font-size:.78rem;color:var(--gray-400)}
+
+  /* ---------- CATALOG ---------- */
+  .equip{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:30px 0}
+  .equip:not(:last-child){border-bottom:1px solid var(--gray-200)}
+  .equip.reverse .equip-img{order:2}
+  .equip-img{aspect-ratio:16/11;border-radius:var(--radius);background:var(--gray-200) center/cover no-repeat;border:1px solid var(--gray-200);position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .3s ease}
+  .equip:hover .equip-img{transform:scale(1.02);box-shadow:var(--shadow-lg)}
+  .equip-img::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(242,106,27,.08),rgba(26,29,33,.22))}
+  .equip-tag{position:absolute;top:14px;left:14px;background:var(--orange);color:#fff;font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:6px;letter-spacing:.04em}
+  .equip h3{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+  .equip .model{color:var(--orange);font-weight:600;font-size:.9rem;margin-bottom:6px}
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 24px}
+  .spec{background:var(--gray-100);border-radius:10px;padding:12px 14px}
+  .spec .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--gray-400);font-weight:600}
+  .spec .v{font-size:1.05rem;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+
+  /* ---------- COVERAGE + STATS ---------- */
+  .coverage{background:var(--carbon);color:#fff}
+  .coverage .section-title{color:#fff}
+  .cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .map-box{position:relative;border-radius:18px;background:var(--graphite);border:1px solid rgba(255,255,255,.1);padding:30px;display:grid;place-items:center}
+  .map-box svg{width:100%;height:auto}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+  .stat{background:var(--graphite);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:26px 22px}
+  .stat .num{font-size:2.6rem;font-weight:900;color:var(--orange);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .lbl{margin-top:8px;color:var(--gray-400);font-size:.9rem;font-weight:500}
+  .branches{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .branch{display:inline-flex;align-items:center;gap:8px;background:var(--graphite);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;font-size:.85rem;font-weight:500}
+  .branch .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+
+  /* ---------- CTA + FOOTER ---------- */
+  .cta{position:relative;overflow:hidden;background:linear-gradient(115deg,var(--orange),var(--orange-dark));color:#fff;text-align:center}
+  .cta::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 2px,transparent 2px 26px),radial-gradient(circle at 82% -30%,rgba(255,255,255,.22),transparent 55%)}
+  .cta .wrap{position:relative;z-index:1}
+  .cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.02em}
+  .cta p{margin:16px auto 0;max-width:560px;color:rgba(255,255,255,.92);font-size:1.08rem}
+  .cta-form{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta-form input{padding:14px 18px;border-radius:10px;border:2px solid transparent;min-width:280px;font-size:.95rem;font-family:inherit}
+  .cta-form input.invalid{border-color:#7a1d0a;background:#fff3ee}
+  .form-msg{margin-top:16px;font-size:.95rem;font-weight:600;min-height:1.2em}
+  .form-msg.ok{color:#fff}
+  .form-msg.err{color:#3a0f04}
+  footer{background:var(--carbon);color:var(--gray-400);padding:64px 0 32px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+  footer h4{color:#fff;font-size:.95rem;font-weight:700;margin-bottom:16px}
+  footer a,footer p{font-size:.9rem;color:var(--gray-400);margin-bottom:10px;display:block}
+  footer a:hover{color:var(--orange)}
+  .foot-logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.25rem;color:#fff;margin-bottom:14px}
+  .socials{display:flex;gap:12px;margin-top:16px}
+  .socials a{width:38px;height:38px;border-radius:9px;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center}
+  .socials svg{width:18px;height:18px;stroke:var(--gray-400)}
+  .socials a:hover{border-color:var(--orange)}
+  .socials a:hover svg{stroke:var(--orange)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
+
+  /* scroll progress · scroll-spy · back-to-top */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--orange);z-index:70;transition:width .08s linear}
+  .nav-links a.active{color:var(--carbon)}
+  .nav-links a.active::after{width:100%}
+  .to-top{
+    position:fixed;right:22px;bottom:22px;z-index:60;width:48px;height:48px;border-radius:14px;
+    background:var(--carbon);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;
+    opacity:0;transform:translateY(12px);pointer-events:none;box-shadow:var(--shadow-lg);
+    transition:opacity .25s ease,transform .25s ease,background .2s ease;
+  }
+  .to-top.show{opacity:1;transform:none;pointer-events:auto}
+  .to-top:hover{background:var(--orange)}
+  .to-top svg{width:20px;height:20px;stroke:#fff;stroke-width:2.5;fill:none}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:960px){
+    .lines-grid{grid-template-columns:1fr 1fr}
+    .line-card.feature{grid-column:span 2;grid-row:span 1}
+    .line-card.span2{grid-column:span 2}
+    .hero-inner{grid-template-columns:1fr;padding:104px 0 72px}
+    .hero-visual{max-width:480px}
+    .about-grid,.cov-grid{grid-template-columns:1fr;gap:36px}
+    .about-photos{height:320px}
+    .equip,.equip.reverse{grid-template-columns:1fr}
+    .equip.reverse .equip-img{order:0}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .nav-links{
+      display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;background:#fff;
+      flex-direction:column;align-items:flex-start;gap:0;padding:10px 22px 16px;
+      border:1px solid var(--gray-200);border-radius:18px;box-shadow:var(--shadow-lg);
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 0;width:100%}
+    .nav-cta .btn{display:none}
+    .burger{display:flex}
+    .lines-grid{grid-template-columns:1fr}
+    .line-card.feature,.line-card.span2{grid-column:span 1;grid-row:span 1}
+    .specs{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+<a href="#productos" class="skip-link">Saltar al contenido</a>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============ NAVBAR ============ -->
+<header>
+  <div class="nav">
+    <a href="#top" class="logo"><span class="mark"></span>MAQUINARIAS&nbsp;MEGA</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#productos">Productos</a>
+      <a href="#equipos">Equipos</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn-primary">Solicitar cotización</a>
+      <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" style="padding:0">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="hero-badge"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Minería Inteligente · Superficie y Subterránea</span>
+      <h1>Equipos que mueven <span class="accent">la industria de Venezuela</span></h1>
+      <p>Venta, distribución y soporte de maquinaria pesada para construcción, minería y manejo de carga. Tecnología de clase mundial con respaldo técnico nacional.</p>
+      <div class="hero-actions">
+        <a href="#productos" class="btn btn-light">Ver líneas de producto</a>
+        <a href="#contacto" class="btn btn-primary">Hablar con un asesor</a>
+      </div>
+    </div>
+    <div class="hero-visual" role="img" aria-label="Equipo de maquinaria pesada Maquinarias Mega en operación"></div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT LINES ============ -->
+<section id="productos">
+  <div class="wrap">
+    <span class="eyebrow">Líneas de producto</span>
+    <h2 class="section-title reveal">Soluciones integrales para cada operación</h2>
+    <p class="lead reveal">Cuatro macro-líneas que cubren el ciclo completo del equipo: desde la adquisición hasta el soporte postventa.</p>
+    <div class="lines-grid">
+      <div class="line-card feature reveal">
+        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 18h18M5 18V9l4-3 5 3v9M9 18v-4h4v4"/></svg></div>
+        <h3>Construcción y Minería</h3>
+        <p>Excavadoras, cargadores, dozers, motoniveladoras y camiones para superficie y subterránea.</p>
+        <span class="more">Ver equipos →</span>
+      </div>
+      <div class="line-card span2 reveal">
+        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 21V7l8-4 8 4v14M9 21v-6h6v6M12 3v4"/></svg></div>
+        <h3>Elevación y Manejo de Carga</h3>
+        <p>Grúas articuladas, plataformas elevadoras y montacargas para logística y obra.</p>
+        <span class="more">Ver equipos →</span>
+      </div>
+      <div class="line-card reveal">
+        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>Accesorios, Componentes y Aditamentos</h3>
+        <p>Implementos, repuestos originales y componentes para extender la vida útil del equipo.</p>
+        <span class="more">Ver catálogo →</span>
+      </div>
+      <div class="line-card reveal">
+        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 7l3 3M3 21l4-1 11-11a2 2 0 0 0 0-3l0 0a2 2 0 0 0-3 0L4 14 3 21z"/></svg></div>
+        <h3>Soporte Postventa</h3>
+        <p>Mantenimiento, servicio técnico, garantía y la Escuela Técnica Mega de capacitación.</p>
+        <span class="more">Conocer más →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="about-photos reveal">
+      <div class="photo" role="img" aria-label="Operación en obra" style="background-image:url('assets/img/operacion-obra-komatsu-d155.jpg')"></div>
+      <div class="photo" role="img" aria-label="Taller de servicio" style="background-image:url('assets/img/taller-servicio-mega.jpg')"></div>
+      <div class="photo" role="img" aria-label="Equipo técnico Mega" style="background-image:url('assets/img/equipo-tecnico-mega.jpg')"></div>
+    </div>
+    <div>
+      <h2 class="section-title">Respaldo técnico que la industria venezolana reconoce</h2>
+      <p class="lead">Más de dos décadas suministrando maquinaria pesada y soluciones de Minería Inteligente, con presencia nacional y un equipo experto en cada etapa del proyecto.</p>
+      <ul class="points">
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Portafolio integral:</b> construcción, minería de superficie y subterránea, elevación y saneamiento ambiental.</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Escuela Técnica Mega:</b> formación especializada para operadores y técnicos.</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Cobertura nacional</b> con sucursales y servicio en sitio.</span></li>
+      </ul>
+      <div class="brand-bar">
+        <span class="label">Marcas que representamos</span>
+        <div class="brands">
+          <span class="brand-chip">KOMATSU</span>
+          <span class="brand-chip">TEREX</span>
+          <span class="brand-chip">TADANO</span>
+          <span class="brand-chip">DIECI</span>
+          <span class="brand-chip">FASSI</span>
+        </div>
+        <p class="brand-note">Nota: lineup de marcas por confirmar con el cliente (las fuentes — PPT, sitio y catálogo — no coinciden).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATALOG ============ -->
+<section id="equipos">
+  <div class="wrap">
+    <span class="eyebrow">Catálogo de equipos</span>
+    <h2 class="section-title reveal">Tecnología lista para trabajar</h2>
+    <p class="lead reveal">Una selección de nuestra flota. Cada equipo con ficha técnica y manual disponible.</p>
+
+    <div style="margin-top:30px">
+      <!-- Equipo 1 -->
+      <div class="equip reveal">
+        <div class="equip-img" role="img" aria-label="Excavadora hidráulica Komatsu PC210" style="background-image:url('assets/img/excavadora-komatsu-pc4000.jpg')"><span class="equip-tag">Excavadora</span></div>
+        <div>
+          <div class="model">Komatsu</div>
+          <h3>Excavadora hidráulica PC210</h3>
+          <p style="color:var(--gray-700)">Excavadora de cadenas para movimiento de tierra y carga, con sistema Komtrax de monitoreo remoto.</p>
+          <div class="specs">
+            <div class="spec"><div class="k">Potencia</div><div class="v">165 HP</div></div>
+            <div class="spec"><div class="k">Capacidad balde</div><div class="v">1,2 m³</div></div>
+            <div class="spec"><div class="k">Peso operativo</div><div class="v">21.000 kg</div></div>
+            <div class="spec"><div class="k">Monitoreo</div><div class="v">Komtrax</div></div>
+          </div>
+          <a href="#" class="btn btn-ghost">Ver ficha técnica</a>
+        </div>
+      </div>
+
+      <!-- Equipo 2 -->
+      <div class="equip reverse reveal">
+        <div class="equip-img" role="img" aria-label="Grúa articulada hidráulica sobre camión" style="background-image:url('assets/img/grua-demag-ac100.jpg')"><span class="equip-tag">Grúa articulada</span></div>
+        <div>
+          <div class="model">Elevación y Carga</div>
+          <h3>Grúa articulada hidráulica</h3>
+          <p style="color:var(--gray-700)">Grúa de brazo articulado para montaje sobre camión, ideal para carga y descarga en obra.</p>
+          <div class="specs">
+            <div class="spec"><div class="k">Momento de carga</div><div class="v">15 t·m</div></div>
+            <div class="spec"><div class="k">Alcance máx.</div><div class="v">12 m</div></div>
+            <div class="spec"><div class="k">Capacidad</div><div class="v">6.500 kg</div></div>
+            <div class="spec"><div class="k">Presión</div><div class="v">315 bar</div></div>
+          </div>
+          <a href="#" class="btn btn-ghost">Ver ficha técnica</a>
+        </div>
+      </div>
+
+      <!-- Equipo 3 -->
+      <!-- TODO imagen: no se encontró foto de plataforma elevadora articulada en maquinariasmega.com (no figura entre los equipos publicados). Se mantiene el placeholder de picsum hasta conseguir una foto real (marca ETI/Haulotte). -->
+      <div class="equip reveal">
+        <div class="equip-img" role="img" aria-label="Plataforma elevadora articulada autopropulsada" style="background-image:url('https://picsum.photos/seed/mega-lift-platform/880/600?grayscale')"><span class="equip-tag">Plataforma</span></div>
+        <div>
+          <div class="model">Acceso en altura</div>
+          <h3>Plataforma elevadora articulada</h3>
+          <p style="color:var(--gray-700)">Plataforma autopropulsada para trabajos en altura con gran alcance y maniobrabilidad.</p>
+          <div class="specs">
+            <div class="spec"><div class="k">Altura trabajo</div><div class="v">12 m</div></div>
+            <div class="spec"><div class="k">Capacidad cesta</div><div class="v">230 kg</div></div>
+            <div class="spec"><div class="k">Alcance horizontal</div><div class="v">6,5 m</div></div>
+            <div class="spec"><div class="k">Tracción</div><div class="v">4×4</div></div>
+          </div>
+          <a href="#" class="btn btn-ghost">Ver ficha técnica</a>
+        </div>
+      </div>
+
+      <!-- Equipo 4 -->
+      <div class="equip reverse reveal">
+        <div class="equip-img" role="img" aria-label="Montacargas Komatsu serie BX50" style="background-image:url('assets/img/telehandler-dieci-hercules.jpg')"><span class="equip-tag">Montacargas</span></div>
+        <div>
+          <div class="model">Komatsu</div>
+          <h3>Montacargas serie BX50</h3>
+          <p style="color:var(--gray-700)">Montacargas robusto para operación logística intensiva en almacenes y patios.</p>
+          <div class="specs">
+            <div class="spec"><div class="k">Capacidad</div><div class="v">2.500 kg</div></div>
+            <div class="spec"><div class="k">Altura elevación</div><div class="v">3,3 m</div></div>
+            <div class="spec"><div class="k">Combustible</div><div class="v">Diésel / GLP</div></div>
+            <div class="spec"><div class="k">Mástil</div><div class="v">Triple</div></div>
+          </div>
+          <a href="#" class="btn btn-ghost">Ver ficha técnica</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COVERAGE + STATS ============ -->
+<section class="coverage" id="cobertura">
+  <div class="wrap cov-grid">
+    <div>
+      <h2 class="section-title">Atendemos toda Venezuela</h2>
+      <p class="lead" style="color:var(--gray-400)">Cuatro sucursales estratégicas y servicio en sitio para responder donde esté tu operación.</p>
+      <div class="stats">
+        <div class="stat"><div class="num" data-target="540" data-suffix="+">0</div><div class="lbl">Clientes atendidos*</div></div>
+        <div class="stat"><div class="num" data-target="1240" data-suffix="+">0</div><div class="lbl">Máquinas entregadas*</div></div>
+        <div class="stat"><div class="num" data-target="26" data-suffix="">0</div><div class="lbl">Años de experiencia</div></div>
+        <div class="stat"><div class="num" data-target="134" data-suffix="+">0</div><div class="lbl">Modelos en catálogo</div></div>
+      </div>
+      <div class="branches">
+        <span class="branch"><span class="dot"></span>Guarenas</span>
+        <span class="branch"><span class="dot"></span>Valencia</span>
+        <span class="branch"><span class="dot"></span>Puerto Ordaz</span>
+        <span class="branch"><span class="dot"></span>Margarita</span>
+      </div>
+      <p class="brand-note" style="color:var(--gray-400)">*Cifras de ejemplo — pendiente de confirmar con el cliente.</p>
+    </div>
+    <div class="map-box reveal">
+      <!-- Mapa estilizado de Venezuela (placeholder) con sucursales -->
+      <svg viewBox="0 0 320 240" fill="none">
+        <path d="M30 70 L70 40 L130 35 L175 25 L230 40 L285 55 L295 95 L270 120 L255 165 L210 200 L165 215 L150 185 L120 175 L95 195 L70 165 L55 120 L35 100 Z"
+              fill="#2C3137" stroke="#F26A1B" stroke-width="2" stroke-linejoin="round"/>
+        <!-- puntos sucursales -->
+        <g fill="#F26A1B">
+          <circle cx="150" cy="70" r="6"/><circle cx="110" cy="80" r="6"/>
+          <circle cx="225" cy="150" r="6"/><circle cx="200" cy="55" r="6"/>
+        </g>
+        <g fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="600">
+          <text x="158" y="68">Guarenas</text>
+          <text x="60" y="84">Valencia</text>
+          <text x="233" y="154">Pto. Ordaz</text>
+          <text x="208" y="52">Margarita</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contacto">
+  <div class="wrap">
+    <h2>¿Listo para potenciar tu operación?</h2>
+    <p>Cuéntanos qué necesitas y un asesor técnico te contactará con la solución adecuada.</p>
+    <form class="cta-form" id="ctaForm" novalidate>
+      <input type="email" id="ctaEmail" placeholder="tu@correo.com" aria-label="Correo electrónico" autocomplete="email" required>
+      <button class="btn btn-light" type="submit">Solicitar contacto</button>
+    </form>
+    <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span class="mark" style="width:34px;height:34px;border-radius:8px;background:var(--orange);display:grid;place-items:center;color:#fff;font-weight:900"></span>MAQUINARIAS MEGA</div>
+        <p>Minería Inteligente, construcción, elevación y soporte técnico para toda Venezuela.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 11v6"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 8h-2a2 2 0 0 0-2 2v12M8 13h6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Productos</h4>
+        <a href="#productos">Construcción y Minería</a>
+        <a href="#productos">Elevación y Carga</a>
+        <a href="#productos">Accesorios y Componentes</a>
+        <a href="#productos">Soporte Postventa</a>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <a href="#">Quiénes somos</a>
+        <a href="#">Escuela Técnica Mega</a>
+        <a href="#equipos">Catálogo</a>
+        <a href="#cobertura">Cobertura</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>Guarenas · Valencia</p>
+        <p>Puerto Ordaz · Margarita</p>
+        <a href="mailto:ventas@maquinariasmega.com">ventas@maquinariasmega.com</a>
+        <p>+58 (xxx) xxx-xxxx</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Maquinarias Mega. Wireframe de prototipo.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos de servicio</a>
+        <span style="color:var(--gray-700)">Datos por confirmar.</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+  // Menú móvil
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal al hacer scroll
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Contadores animados
+  function animateCounter(el) {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1600; const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString('es') + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); countObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.num[data-target]').forEach(el => countObs.observe(el));
+
+  // Validación del formulario de contacto
+  const form = document.getElementById('ctaForm');
+  const emailInput = document.getElementById('ctaEmail');
+  const msg = document.getElementById('formMsg');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const value = emailInput.value.trim();
+    if (!emailRe.test(value)) {
+      emailInput.classList.add('invalid');
+      emailInput.focus();
+      msg.textContent = 'Ingresa un correo válido para que podamos contactarte.';
+      msg.className = 'form-msg err';
+      return;
+    }
+    emailInput.classList.remove('invalid');
+    msg.textContent = 'Gracias. Un asesor técnico te contactará pronto.';
+    msg.className = 'form-msg ok';
+    form.reset();
+  });
+  emailInput.addEventListener('input', () => emailInput.classList.remove('invalid'));
+
+  // Barra de progreso de scroll + botón volver arriba
+  const progress = document.getElementById('scrollProgress');
+  const toTop = document.getElementById('toTop');
+  const doc = document.documentElement;
+  function onScroll(){
+    const sc = doc.scrollTop || document.body.scrollTop;
+    const max = doc.scrollHeight - doc.clientHeight;
+    progress.style.width = max > 0 ? (sc / max * 100) + '%' : '0%';
+    toTop.classList.toggle('show', sc > 600);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Scroll-spy: resalta la sección activa en el nav
+  const navAnchors = [...document.querySelectorAll('.nav-links a')];
+  const spyTargets = navAnchors
+    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+    .filter(Boolean);
+  const spyObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  spyTargets.forEach(s => spyObs.observe(s));
+</script>
+</body>
+</html>
