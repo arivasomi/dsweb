@@ -346,10 +346,11 @@ section{padding:var(--section-y) 0}
 .coverage .section-title{color:#fff}
 .coverage .eyebrow{color:var(--orange)}
 .cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}
-/* mapa de cobertura: PNG transparente del mapa naranja, flota directo sobre
-   la banda carbón (sin tarjeta ni recuadro) */
-.map-box{position:relative;background:transparent;border:0;padding:0}
-.map-img{display:block;width:100%;height:auto}
+/* mapa de cobertura: tarjeta blanca (el mapa naranja fue diseñado sobre blanco;
+   así el halo del recorte de fondo desaparece). Recortamos el espacio vacío
+   inferior del PNG para que encaje ajustado. */
+.map-box{position:relative;background:#fff;border-radius:var(--r-lg);padding:18px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.map-img{display:block;width:100%;height:auto;aspect-ratio:1600/1360;object-fit:cover;object-position:center top}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 .stat{background:var(--graphite);border:1px solid rgba(255,255,255,.07);border-radius:var(--r-md);padding:28px 24px;transition:border-color .25s,transform .25s var(--ease)}
 .stat:hover{border-color:rgba(242,106,27,.4);transform:translateY(-3px)}
