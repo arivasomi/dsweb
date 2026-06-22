@@ -132,15 +132,12 @@ header.scrolled{
   display:flex;align-items:center;justify-content:space-between;
   height:64px;padding:0 24px;
 }
-.logo{display:inline-flex;align-items:center;color:#fff;font-size:1.5rem}
-/* reusable "Maquinarias MEGA" lockup — wordmark inherits color (adapts to
-   context: white over the hero, dark on the white header), bolt stays orange.
-   Overall size is driven by font-size on the parent (.logo/.hero-logo/.foot-logo). */
-.mlogo{display:inline-flex;align-items:flex-end;gap:.16em;line-height:1;color:inherit}
-.mlogo-words{display:inline-flex;flex-direction:column;align-items:center;line-height:.9}
-.mlogo-sub{font-family:var(--font-body);font-weight:500;font-size:.32em;letter-spacing:.4em;padding-left:.4em;color:inherit}
-.mlogo-name{font-family:var(--font-display);font-weight:800;font-size:1em;letter-spacing:.04em;color:inherit}
-.mlogo-bolt{width:.62em;height:.62em;flex:none;margin-bottom:.06em}
+.logo{display:inline-flex;align-items:center;color:#fff}
+/* brand logo (vector letterforms extracted from the official artwork):
+   the wordmark paths use currentColor so the logo adapts — white over the hero,
+   dark on the solid header, white in the footer — while the bolt stays orange. */
+.mlogo{display:block;width:auto;color:inherit}
+.logo .mlogo{height:34px}
 .nav-links{display:flex;align-items:center;gap:32px}
 .nav-links a{font-weight:500;font-size:.94rem;color:rgba(255,255,255,.86);position:relative;transition:color .2s ease}
 .nav-links a:hover{color:#fff}
@@ -178,8 +175,8 @@ header.scrolled .burger span{background:var(--carbon)}
 }
 .hero-content{align-self:center;max-width:860px;margin:0 auto;text-align:center}
 .hero-logo{
-  display:inline-flex;margin-bottom:clamp(16px,2.6vh,30px);
-  color:#fff;font-size:clamp(46px,8vw,82px);
+  display:block;width:auto;height:clamp(70px,12vw,128px);
+  margin:0 auto clamp(16px,2.6vh,30px);color:#fff;
 }
 .hero h1{font-size:clamp(2.5rem,5.6vw,4.5rem);font-weight:800;line-height:1.02;letter-spacing:-.03em}
 .hero h1 .accent{color:var(--orange)}
@@ -390,7 +387,7 @@ footer h4{color:#fff;font-family:var(--font-stamp);font-size:.74rem;font-weight:
 footer a,footer p{font-size:.9rem;color:var(--gray-400);margin-bottom:11px;display:block}
 footer a{transition:color .2s}
 footer a:hover{color:var(--orange)}
-.foot-logo{display:inline-flex;color:#fff;font-size:1.6rem;margin-bottom:16px}
+.foot-logo{display:block;width:auto;height:42px;color:#fff;margin-bottom:16px}
 .socials{display:flex;gap:12px;margin-top:18px}
 .socials a{width:40px;height:40px;border-radius:var(--r-sm);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;transition:border-color .2s,transform .2s var(--ease)}
 .socials svg{width:18px;height:18px;stroke:var(--gray-400);transition:stroke .2s}
