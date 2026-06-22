@@ -2,9 +2,10 @@
 name: Maquinarias Mega
 description: Refined-industrial design system for a Venezuelan heavy-machinery brand — precise, technical, trustworthy.
 colors:
-  orange: "#F26A1B"
-  orange-dark: "#D2540C"
+  orange: "#F37223"          # Pantone naranja del logo
+  orange-dark: "#DB5E14"
   orange-tint: "#FFF1E8"
+  brand-gray: "#464646"      # Pantone gris del logo
   carbon: "#14171A"
   graphite: "#23282E"
   steel-700: "#3C434B"
@@ -13,39 +14,48 @@ colors:
   line-200: "#E4E8EC"
   mist-100: "#F4F6F8"
   white: "#FFFFFF"
+  # acentos por línea de producto (uso moderado)
+  line-construccion: "#FEBC12"   # construcción y minería
+  line-elevacion: "#ED1847"      # elevación y manejo de carga
+  line-accesorios: "#21B3E8"     # accesorios y componentes
+  line-postventa: "#D2D3D4"      # soporte post venta
+  # sub-acentos de soporte postventa
+  pv-repuestos: "#EF4136"        # repuestos
+  pv-servicio: "#F15A29"         # servicio técnico especializado
+  pv-garantia: "#F7B243"         # garantía de fabricantes
 typography:
   display:
-    fontFamily: "Archivo, 'Manrope', sans-serif"
+    fontFamily: "Montserrat, system-ui, sans-serif"
     fontSize: "clamp(2.6rem, 6vw, 4.6rem)"
     fontWeight: 800
     lineHeight: 1.02
     letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Archivo, 'Manrope', sans-serif"
+    fontFamily: "Montserrat, system-ui, sans-serif"
     fontSize: "clamp(1.8rem, 3.6vw, 2.8rem)"
     fontWeight: 800
     lineHeight: 1.08
     letterSpacing: "-0.02em"
   title:
-    fontFamily: "Archivo, 'Manrope', sans-serif"
+    fontFamily: "Montserrat, system-ui, sans-serif"
     fontSize: "1.25rem"
     fontWeight: 700
     lineHeight: 1.2
     letterSpacing: "-0.01em"
   body:
-    fontFamily: "Manrope, system-ui, sans-serif"
+    fontFamily: "Montserrat, system-ui, sans-serif"
     fontSize: "1.05rem"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "normal"
   label:
-    fontFamily: "'IBM Plex Mono', ui-monospace, monospace"
+    fontFamily: "Montserrat, system-ui, sans-serif"
     fontSize: "0.74rem"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "0.16em"
   spec:
-    fontFamily: "'IBM Plex Mono', ui-monospace, monospace"
+    fontFamily: "Montserrat, system-ui, sans-serif"
     fontSize: "1.1rem"
     fontWeight: 600
     lineHeight: 1.1
@@ -151,24 +161,22 @@ A near-monochrome carbon-and-mist field, charged by one industrial safety-orange
 
 ## 3. Typography
 
-**Display Font:** Archivo (with Manrope, sans-serif fallback)
-**Body Font:** Manrope (with system-ui fallback)
-**Label/Mono Font:** IBM Plex Mono (with ui-monospace fallback)
+**Single family:** Montserrat (with system-ui, sans-serif fallback) — display, body, labels and specs all use Montserrat. Weights 400–900 are loaded.
 
-**Character:** Archivo is a grotesque with industrial bone structure — confident, slightly condensed at heavy weights, engineered rather than friendly. Manrope keeps body copy clean and quietly modern. IBM Plex Mono is the technical voice: it stamps specs, labels, and counters with datasheet credibility. The pairing says "we measure things."
+**Character:** Montserrat is a geometric grotesque — confident and engineered at heavy weights, clean and quietly modern in body copy. The system's technical voice (specs, labels, counters) is Montserrat in UPPERCASE with wide tracking and `tabular-nums`, not a separate monospace face. The brand reads as one coherent voice that still "measures things."
 
 ### Hierarchy
 - **Display** (800, `clamp(2.6rem, 6vw, 4.6rem)`, 1.02, `-0.03em`): Hero headline only. One per page. Tight tracking, balanced wrap.
 - **Headline** (800, `clamp(1.8rem, 3.6vw, 2.8rem)`, 1.08, `-0.02em`): Section titles.
 - **Title** (700, ~1.25rem, 1.2): Card and equipment names.
 - **Body** (400, ~1.05rem, 1.6): Paragraphs and leads. Hold leads to ~60–70ch for readability.
-- **Label** (600, ~0.74rem, `0.16em`, UPPERCASE, mono): Eyebrows, tags, kicker labels, spec keys. The recurring "technical stamp."
-- **Spec** (600, ~1.1rem, mono, tabular numerals): Spec values and animated stat counters. Always `font-variant-numeric: tabular-nums` so digits don't jitter.
+- **Label** (600, ~0.74rem, `0.16em`, UPPERCASE, Montserrat): Eyebrows, tags, kicker labels, spec keys. The recurring "technical stamp."
+- **Spec** (600, ~1.1rem, Montserrat, tabular numerals): Spec values and animated stat counters. Always `font-variant-numeric: tabular-nums` so digits don't jitter.
 
 ### Named Rules
-**The Tabular Numbers Rule.** Every number a buyer might compare — specs, capacities, stat counters, prices — is set in mono with `tabular-nums`. Numbers are the product; they must align in a column and never shift width as they animate.
+**The Tabular Numbers Rule.** Every number a buyer might compare — specs, capacities, stat counters, prices — is set with `tabular-nums`. Numbers are the product; they must align in a column and never shift width as they animate.
 
-**The Mono-Stamp Rule.** Eyebrows and tags are always uppercase IBM Plex Mono with `0.16em` tracking. This single recurring treatment is the system's technical signature — use it, don't improvise alternates.
+**The Stamp Rule.** Eyebrows and tags are always uppercase Montserrat (600) with `0.16em` tracking. This single recurring treatment is the system's technical signature — use it, don't improvise alternates.
 
 ## 4. Elevation
 
@@ -224,7 +232,7 @@ The datasheet made literal. Each equipment block pairs full-bleed photography wi
 
 ### Do:
 - **Do** keep orange to ≤10% of any viewport — one primary action, one key word (The One Orange Rule).
-- **Do** set every comparable number in IBM Plex Mono with `tabular-nums` (specs, counters, capacities).
+- **Do** set every comparable number in Montserrat with `tabular-nums` (specs, counters, capacities).
 - **Do** let real equipment photography carry the impact; keep the UI restrained around it (Komatsu/Caterpillar playbook).
 - **Do** build depth from spacing and tonal layering first; reserve soft shadows for hover and the floating nav (Flat-By-Default).
 - **Do** give every section one obvious next step toward a lead (quote / advisor), with trust signals nearby.

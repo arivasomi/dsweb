@@ -56,19 +56,36 @@ form.addEventListener('submit', (e) => {
 });
 emailInput.addEventListener('input', () => emailInput.classList.remove('invalid'));
 
-// Barra de progreso de scroll + botón volver arriba
+// Barra de progreso de scroll + botón volver arriba + header transparente sobre el hero
 const progress = document.getElementById('scrollProgress');
 const toTop = document.getElementById('toTop');
+const header = document.querySelector('header');
 const doc = document.documentElement;
 function onScroll(){
   const sc = doc.scrollTop || document.body.scrollTop;
   const max = doc.scrollHeight - doc.clientHeight;
   progress.style.width = max > 0 ? (sc / max * 100) + '%' : '0%';
   toTop.classList.toggle('show', sc > 600);
+  // el header es transparente arriba del hero y se vuelve sólido tras ~300px de scroll
+  header.classList.toggle('scrolled', sc > 300);
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Quiénes somos — cross-fade lento de imágenes en la tela grande
+const aboutRotate = document.getElementById('aboutRotate');
+if (aboutRotate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const slides = [...aboutRotate.querySelectorAll('.photo-slide')];
+  if (slides.length > 1) {
+    let idx = 0;
+    setInterval(() => {
+      slides[idx].classList.remove('is-active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('is-active');
+    }, 5000);
+  }
+}
 
 // Scroll-spy: resalta la sección activa en el nav
 const navAnchors = [...document.querySelectorAll('.nav-links a')];
