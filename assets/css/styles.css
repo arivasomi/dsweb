@@ -149,7 +149,7 @@ header.scrolled{
 .burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:background .2s ease}
 
 /* solid (scrolled) state: switch nav text back to dark for the white bar */
-header.scrolled .logo{color:var(--carbon)}
+header.scrolled .logo{color:var(--brand-gray)}
 header.scrolled .nav-links a{color:var(--gray-700)}
 header.scrolled .nav-links a:hover{color:var(--carbon)}
 header.scrolled .burger span{background:var(--carbon)}
