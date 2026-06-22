@@ -279,7 +279,9 @@ section{padding:var(--section-y) 0}
 
 /* lock the product-lines section to a single viewport: the grid flexes to
    fill the space left under the heading so rows shrink instead of overflowing. */
-#productos{height:100vh;height:100dvh;min-height:0}
+/* each section fades into the next one's colour over its bottom strip, so the
+   seams blend as soft gradients instead of cutting hard lines between bands */
+#productos{height:100vh;height:100dvh;min-height:0;background:linear-gradient(180deg,#fff 0%,#fff calc(100% - 220px),var(--gray-100) 100%)}
 #productos .wrap{display:flex;flex-direction:column;justify-content:center;width:100%;height:100%}
 #productos .lines-grid{flex:1 1 auto;min-height:0;margin-top:clamp(24px,3.5vh,52px)}
 /* higher specificity than .reveal so the accordion's flex-grow actually
@@ -291,7 +293,7 @@ section{padding:var(--section-y) 0}
 }
 
 /* ---------- ABOUT ---------- */
-.about{background:var(--gray-100)}
+.about{background:linear-gradient(180deg,var(--gray-100) 0%,var(--gray-100) calc(100% - 220px),#FFE3CE 100%)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}
 .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:440px}
 .photo{border-radius:var(--r-md);background:var(--graphite) center/cover no-repeat;position:relative;overflow:hidden}
@@ -325,6 +327,10 @@ section{padding:var(--section-y) 0}
 .brand-note{margin:30px auto 0;font-size:.78rem;color:var(--gray-400)}
 
 /* ---------- CATALOG ---------- */
+/* the brands band stays solid peach to its edge; its colour bleeds DOWN into the
+   top of this section, then white holds before easing into the dark coverage band
+   (that bottom fade stays within the section padding so the rows keep clean white) */
+#equipos{background:linear-gradient(180deg,#FFE3CE 0%,#fff 72px,#fff calc(100% - 130px),var(--carbon) 100%)}
 .equip{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:46px 0}
 .equip:not(:last-child){border-bottom:1px solid var(--gray-200)}
 .equip.reverse .equip-img{order:2}
@@ -342,22 +348,22 @@ section{padding:var(--section-y) 0}
 .spec .v{font-family:var(--font-stamp);font-size:1.1rem;font-weight:600;margin-top:5px;font-variant-numeric:tabular-nums;color:var(--carbon)}
 
 /* ---------- COVERAGE + STATS ---------- */
-.coverage{background:var(--carbon);color:#fff}
-.coverage .section-title{color:#fff}
+/* banda clara: la imagen del mapa (fondo blanco) se integra sin halos */
+.coverage{background:var(--gray-100);color:var(--carbon)}
+.coverage .section-title{color:var(--carbon)}
 .coverage .eyebrow{color:var(--orange)}
 .cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}
-/* mapa de cobertura: tarjeta blanca (el mapa naranja fue diseñado sobre blanco;
-   así el halo del recorte de fondo desaparece). Recortamos el espacio vacío
-   inferior del PNG para que encaje ajustado. */
-.map-box{position:relative;background:#fff;border-radius:var(--r-lg);padding:18px;overflow:hidden;box-shadow:var(--shadow-lg)}
+/* mapa de cobertura sobre tarjeta blanca; recortamos el espacio vacío inferior
+   de la imagen para que encaje ajustado */
+.map-box{position:relative;background:#fff;border-radius:var(--r-lg);padding:18px;overflow:hidden;box-shadow:var(--shadow)}
 .map-img{display:block;width:100%;height:auto;aspect-ratio:1600/1360;object-fit:cover;object-position:center top}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
-.stat{background:var(--graphite);border:1px solid rgba(255,255,255,.07);border-radius:var(--r-md);padding:28px 24px;transition:border-color .25s,transform .25s var(--ease)}
-.stat:hover{border-color:rgba(242,106,27,.4);transform:translateY(-3px)}
+.stat{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-md);padding:28px 24px;transition:border-color .25s,transform .25s var(--ease),box-shadow .25s var(--ease)}
+.stat:hover{border-color:rgba(242,106,27,.4);transform:translateY(-3px);box-shadow:var(--shadow)}
 .stat .num{font-family:var(--font-stamp);font-size:2.5rem;font-weight:600;color:var(--orange);letter-spacing:-.01em;line-height:1;font-variant-numeric:tabular-nums}
-.stat .lbl{margin-top:10px;color:var(--gray-400);font-size:.88rem;font-weight:500}
+.stat .lbl{margin-top:10px;color:var(--slate-500);font-size:.88rem;font-weight:500}
 .branches{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.branch{display:inline-flex;align-items:center;gap:9px;background:var(--graphite);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-pill);padding:9px 16px;font-family:var(--font-stamp);font-size:.78rem;font-weight:500;letter-spacing:.04em}
+.branch{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-pill);padding:9px 16px;font-family:var(--font-stamp);font-size:.78rem;font-weight:500;letter-spacing:.04em}
 .branch .dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
 
 /* ---------- CTA + FOOTER ---------- */
