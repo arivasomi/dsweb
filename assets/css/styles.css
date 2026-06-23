@@ -171,22 +171,22 @@ header.scrolled .burger span{background:var(--carbon)}
     linear-gradient(180deg,rgba(243,114,35,.20) 0%,rgba(243,114,35,.05) 32%,transparent 56%),
     linear-gradient(180deg,#14171A 0%,#181C20 55%,#1F2429 100%);
 }
-/* two-column hero: copy on the left, the product-line accordion fills the whole
-   right column — top to bottom — so the fixed header rides over its top edge. */
+/* stacked hero: centred copy in the open upper region, the product-line
+   accordion pinned to the floor as a full-bleed horizontal strip */
 .hero-inner{
-  position:relative;display:grid;grid-template-columns:1fr 1fr;
-  align-items:stretch;gap:clamp(28px,4vw,60px);
-  min-height:100vh;min-height:100dvh;padding:0;
+  position:relative;display:grid;grid-template-rows:1fr auto;
+  gap:clamp(28px,4vh,52px);
+  min-height:100vh;min-height:100dvh;padding:clamp(96px,11vh,120px) 0 0;
 }
-/* the left copy clears the fixed header and centres in its column */
-.hero-content{align-self:center;max-width:none;margin:0;text-align:left;padding:clamp(104px,13vh,128px) 0 clamp(48px,8vh,80px)}
+/* the copy clears the fixed header and centres in the freed space above the strip */
+.hero-content{align-self:center;max-width:860px;margin:0 auto;text-align:center}
 .hero-logo{
   display:block;width:auto;height:clamp(70px,12vw,128px);
   margin:0 auto clamp(16px,2.6vh,30px);color:#fff;
 }
 .hero h1{font-size:clamp(2.2rem,4.7vw,3.75rem);font-weight:800;line-height:1.04;letter-spacing:-.03em}
 .hero h1 .accent{color:var(--orange)}
-.hero p{margin:clamp(14px,2vh,22px) 0 0;font-size:clamp(1rem,1.1vw,1.16rem);color:rgba(255,255,255,.80);max-width:46ch}
+.hero p{margin:clamp(14px,2vh,22px) auto 0;font-size:clamp(1rem,1.1vw,1.16rem);color:rgba(255,255,255,.80);max-width:60ch}
 .hero-actions{margin-top:clamp(22px,3vh,38px);display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .scroll-cue{
   display:inline-flex;flex-direction:column;align-items:center;gap:8px;margin-top:clamp(20px,3vh,40px);
@@ -269,7 +269,7 @@ section{padding:var(--section-y) 0}
 }
 /* reserve two lines for every title so all card footer panels match height,
    whether the title runs one line or two */
-.line-card h3{font-size:1.2rem;font-weight:700;margin-bottom:0;letter-spacing:-.01em;line-height:1.2;display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;transition:font-size .5s var(--ease-out)}
+.line-card h3{font-size:1.45rem;font-weight:700;margin-bottom:0;letter-spacing:-.01em;line-height:1.18;display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;transition:font-size .5s var(--ease-out)}
 .line-card p{color:rgba(255,255,255,.82);font-size:.84rem;line-height:1.45;max-width:34ch;margin:0}
 /* the reveal-on-hover link adopts the card's own line accent (it only shows on
    hover/focus, so the resting card stays accent-free) */
@@ -294,7 +294,7 @@ section{padding:var(--section-y) 0}
     rgb(from var(--tint) r g b / .66) 50%,
     rgb(from var(--tint) r g b / 0) 100%);
 }
-.line-card:hover h3,.line-card:focus-within h3{font-size:1.5rem}
+.line-card:hover h3,.line-card:focus-within h3{font-size:1.8rem}
 
 /* lock the product-lines section to a single viewport: the grid flexes to
    fill the space left under the heading so rows shrink instead of overflowing. */
@@ -304,13 +304,12 @@ section{padding:var(--section-y) 0}
    than stretching to fill the floor, it sits at its natural height at the
    bottom (align-self:end), so the slack in its grid row becomes breathing room
    between the hero text and the strip. */
-/* vertical accordion: the horizontal strip rotated 90° into the right half.
-   pinned to the section's right edge so it bleeds to the screen edge and runs
-   the full hero height (the fixed header rides over its top). four stacked photo
-   panels share the height; the hovered one grows and its siblings yield. */
+/* horizontal accordion: a full-bleed sector strip pinned to the hero floor.
+   four photo panels share the width; the hovered one grows and its siblings
+   yield. (keeps the dark scrim + accent-hover styling of the cards.) */
 .hero-lines{
-  position:absolute;top:0;right:0;bottom:0;z-index:1;
-  width:50vw;flex-direction:column;gap:0;margin:0;
+  width:100vw;margin-left:calc(50% - 50vw);margin-top:0;align-self:end;
+  flex-direction:row;gap:0;height:auto;min-height:clamp(300px,42vh,440px);
 }
 /* only relax min-height here — the base .line-card already sets flex:1 1 0, and
    re-declaring flex-grow at this specificity would beat the :hover/:focus-within
@@ -323,7 +322,17 @@ section{padding:var(--section-y) 0}
 }
 
 /* ---------- ABOUT ---------- */
-.about{background:linear-gradient(180deg,var(--gray-100) 0%,var(--gray-100) calc(100% - 220px),#FFE3CE 100%)}
+/* blend the seam with the dark hero floor: the section opens at the hero's
+   carbon and fades gradually into its light base. extra top padding makes the
+   section taller so its content clears the longer fade and sits on light. */
+.about{
+  background:linear-gradient(180deg,
+    var(--carbon) 0,
+    rgb(from var(--carbon) r g b / 0) 96px,
+    rgb(from #FFE3CE r g b / 0) calc(100% - 220px),
+    #FFE3CE 100%);
+  padding-top:clamp(120px,16vh,160px);
+}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}
 .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:440px}
 .photo{border-radius:var(--r-md);background:var(--graphite) center/cover no-repeat;position:relative;overflow:hidden}
