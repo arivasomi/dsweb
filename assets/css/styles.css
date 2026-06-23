@@ -28,7 +28,9 @@
   /* ---- color soporte postventa (sub-acentos) ---- */
   --pv-repuestos:#EF4136;        /* repuestos */
   --pv-servicio:#F15A29;         /* servicio técnico especializado */
+  --pv-entrenamiento:#F37223;    /* entrenamiento / escuela técnica */
   --pv-garantia:#F7B243;         /* garantía de fabricantes */
+  --pv-monitoreo:#FEBC12;        /* monitoreo satelital */
 
   /* ---- type (Montserrat única familia de marca) ---- */
   --font-display:'Montserrat',system-ui,sans-serif;
@@ -43,11 +45,11 @@
   --r-pill:999px;
   --maxw:1200px;
 
-  /* ---- elevation (suave y difusa, nunca dura) ---- */
-  --shadow-floating:0 12px 34px rgba(20,23,26,.12);
-  --shadow:0 12px 34px rgba(20,23,26,.10);
-  --shadow-lg:0 24px 60px rgba(20,23,26,.16);
-  --shadow-glow:0 10px 24px rgba(242,106,27,.32);
+  /* ---- elevation: removed — flat surfaces, no drop shadows ---- */
+  --shadow-floating:none;
+  --shadow:none;
+  --shadow-lg:none;
+  --shadow-glow:none;
 
   /* ---- motion ---- */
   --ease:cubic-bezier(.32,.72,0,1);
@@ -118,6 +120,9 @@ h2.section-title{font-size:clamp(1.8rem,3.6vw,2.8rem);font-weight:800;letter-spa
 header{
   position:fixed;top:0;left:0;right:0;z-index:50;
   background:transparent;border-bottom:1px solid transparent;
+  /* transparent state still frosts what scrolls under it (a light blur over the
+     hero) — the scrolled state deepens the blur and adds the glass background */
+  backdrop-filter:blur(4px) saturate(1.05);-webkit-backdrop-filter:blur(4px) saturate(1.05);
   transition:background .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
 }
 /* once scrolled past the hero: opaque glass with a clear lift so it never gets
@@ -125,7 +130,6 @@ header{
 header.scrolled{
   background:rgba(255,255,255,.85);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);
   border-bottom-color:rgba(228,232,236,.9);
-  box-shadow:0 8px 28px rgba(20,23,26,.12);
 }
 .nav{
   position:relative;max-width:var(--maxw);margin:0 auto;
@@ -137,9 +141,12 @@ header.scrolled{
    the wordmark paths use currentColor so the logo adapts — white over the hero,
    dark on the solid header, white in the footer — while the bolt stays orange. */
 .mlogo{display:block;width:auto;color:inherit}
-.logo .mlogo{height:50px}
+/* transparent (default) header: larger logo for presence over the hero */
+.logo .mlogo{height:64px;transition:height .35s var(--ease)}
+/* solid (scrolled) header: shrink back so it sits cleanly in the white bar */
+header.scrolled .logo .mlogo{height:50px}
 .nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-weight:500;font-size:.94rem;color:rgba(255,255,255,.86);position:relative;transition:color .2s ease}
+.nav-links a{font-weight:500;font-size:.94rem;color:rgba(255,255,255,.85);position:relative;transition:color .2s ease}
 .nav-links a:hover{color:#fff}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--orange);transition:width .25s var(--ease)}
 .nav-links a:hover::after{width:100%}
@@ -158,60 +165,42 @@ header.scrolled .burger span{background:var(--carbon)}
 .hero{position:relative;color:#fff;overflow:hidden;background:var(--carbon)}
 .hero-bg{
   position:absolute;inset:0;
+  /* carbon hero: a soft orange glow from the top fades down into a deep
+     carbon→graphite base — no line texture, no radial glows */
   background:
-    repeating-linear-gradient(135deg,rgba(255,255,255,.02) 0 1px,transparent 1px 34px),
-    radial-gradient(130% 90% at 50% -10%,rgba(242,106,27,.45),rgba(242,106,27,.12) 38%,transparent 62%),
-    linear-gradient(180deg,#221f24 0%,#16191d 52%,#0f1216 100%);
+    linear-gradient(180deg,rgba(243,114,35,.20) 0%,rgba(243,114,35,.05) 32%,transparent 56%),
+    linear-gradient(180deg,#14171A 0%,#181C20 55%,#1F2429 100%);
 }
-.hero-bg::after{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(95% 65% at 50% 116%,rgba(242,106,27,.22),transparent 56%),
-    radial-gradient(60% 70% at 88% 50%,rgba(242,106,27,.12),transparent 60%);
-}
+/* two-column hero: copy on the left, the product-line accordion fills the whole
+   right column — top to bottom — so the fixed header rides over its top edge. */
 .hero-inner{
-  position:relative;display:grid;grid-template-rows:1fr auto;gap:clamp(20px,3vh,42px);
-  min-height:100vh;min-height:100dvh;padding:clamp(88px,11vh,120px) 0 0;
+  position:relative;display:grid;grid-template-columns:1fr 1fr;
+  align-items:stretch;gap:clamp(28px,4vw,60px);
+  min-height:100vh;min-height:100dvh;padding:0;
 }
-.hero-content{align-self:center;max-width:860px;margin:0 auto;text-align:center}
+/* the left copy clears the fixed header and centres in its column */
+.hero-content{align-self:center;max-width:none;margin:0;text-align:left;padding:clamp(104px,13vh,128px) 0 clamp(48px,8vh,80px)}
 .hero-logo{
   display:block;width:auto;height:clamp(70px,12vw,128px);
   margin:0 auto clamp(16px,2.6vh,30px);color:#fff;
 }
-.hero h1{font-size:clamp(2.5rem,5.6vw,4.5rem);font-weight:800;line-height:1.02;letter-spacing:-.03em}
+.hero h1{font-size:clamp(2.2rem,4.7vw,3.75rem);font-weight:800;line-height:1.04;letter-spacing:-.03em}
 .hero h1 .accent{color:var(--orange)}
-.hero p{margin:clamp(14px,2vh,22px) auto 0;font-size:clamp(1rem,1.1vw,1.16rem);color:rgba(255,255,255,.86);max-width:60ch}
+.hero p{margin:clamp(14px,2vh,22px) 0 0;font-size:clamp(1rem,1.1vw,1.16rem);color:rgba(255,255,255,.80);max-width:46ch}
 .hero-actions{margin-top:clamp(22px,3vh,38px);display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .scroll-cue{
   display:inline-flex;flex-direction:column;align-items:center;gap:8px;margin-top:clamp(20px,3vh,40px);
-  color:rgba(255,255,255,.60);font-family:var(--font-stamp);font-weight:600;font-size:.7rem;
+  color:var(--slate-500);font-family:var(--font-stamp);font-weight:600;font-size:.7rem;
   letter-spacing:.18em;text-transform:uppercase;transition:color .25s ease;
 }
-.scroll-cue:hover{color:#fff}
+.scroll-cue:hover{color:var(--carbon)}
 .sc-chevron{display:grid;place-items:center}
 .sc-chevron svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none;animation:scrollBob 1.8s var(--ease) infinite}
 @keyframes scrollBob{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(6px);opacity:1}}
 
-/* sector strip — full-bleed band of four equal photos pinned to the hero floor */
-.hero-mediums{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  width:100vw;margin-left:calc(50% - 50vw);
-}
-.medium{
-  position:relative;z-index:0;overflow:hidden;
-  min-height:clamp(180px,30vh,260px);display:flex;flex-direction:column;justify-content:flex-end;
-  padding:18px;color:#fff;
-  background-size:cover;background-position:center;
-}
-.medium::before{
-  content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(20,23,26,.10) 0%,rgba(20,23,26,.86) 100%);
-  transition:background .38s var(--ease);
-}
-.medium:hover::before{background:linear-gradient(180deg,rgba(242,106,27,.22) 0%,rgba(20,23,26,.90) 100%)}
-.m-body{position:relative;z-index:2;min-width:0}
-.m-label{display:block;font-family:var(--font-stamp);font-weight:600;font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.15}
-.m-sub{display:block;font-size:.75rem;color:rgba(255,255,255,.72);margin-top:4px;line-height:1.3}
+/* the sector strip and the product-lines accordion are now one component:
+   the accordion (.hero-lines) is pinned to the hero floor as a full-bleed
+   band — see its sizing under PRODUCT LINES below. */
 
 /* ---------- PRODUCT LINES ---------- */
 section{padding:var(--section-y) 0}
@@ -219,7 +208,7 @@ section{padding:var(--section-y) 0}
    expands and the others yield, so no line reads as more important at rest. */
 .lines-grid{display:flex;gap:4px;margin-top:52px}
 
-/* every card is a photo tile: image + dark gradient + frosted info panel */
+/* every card is a photo tile: image + top-and-bottom gradient vignette */
 .line-card{
   position:relative;overflow:hidden;color:#fff;border:0;border-radius:0;padding:0;
   flex:1 1 0;min-width:0;
@@ -227,12 +216,19 @@ section{padding:var(--section-y) 0}
   /* image is set inline per card (background-image), so it resolves relative
      to the document — a relative url() inside a CSS var resolves against the
      stylesheet path instead, which breaks on subpath deploys. */
-  background-color:#14171A;background-position:center;background-size:cover;background-repeat:no-repeat;
+  background-color:#fff;background-position:center;background-size:cover;background-repeat:no-repeat;
   transition:flex-grow .6s var(--ease-out),box-shadow .45s var(--ease-out);
 }
+/* gradient-only treatment (no blur): the photo is framed by a soft dark wash at
+   the top and a deeper one at the bottom, with the image left clear through the
+   middle — dark so the white title reads cleanly over the photo. */
 .line-card::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(165deg,rgba(20,23,26,.18),rgba(20,23,26,.55) 45%,rgba(20,23,26,.90));
+  background:linear-gradient(180deg,
+    rgba(16,19,22,.34) 0%,
+    rgba(16,19,22,0) 34%,
+    rgba(16,19,22,0) 56%,
+    rgba(16,19,22,.52) 100%);
   transition:opacity .6s var(--ease-out);
 }
 .line-card>*{position:relative;z-index:1}
@@ -247,49 +243,83 @@ section{padding:var(--section-y) 0}
 
 .line-icon{
   width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin:18px 0 0 18px;
-  background:color-mix(in srgb,var(--accent,#fff) 18%,rgba(255,255,255,.12));
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  border:1px solid color-mix(in srgb,var(--accent,#fff) 55%,rgba(255,255,255,.18));
+  background:linear-gradient(150deg,
+    color-mix(in srgb,var(--accent,#fff) 42%,rgba(20,23,26,.55)),
+    rgba(20,23,26,.55));
+  border:1px solid color-mix(in srgb,var(--accent,#fff) 60%,rgba(255,255,255,.18));
 }
 .line-icon svg{width:19px;height:19px;stroke:#fff}
 
-/* frosted-glass panel pinned to the bottom of each tile — borderless so it
-   reads as part of the photo, not a box stuck on top of it */
+/* gradient scrim pinned to the bottom of each tile (no blur): fades from clear
+   into a deep wash so the text stays legible while reading as part of the photo */
 .line-body{
   margin-top:auto;
-  background:rgba(20,23,26,.30);
-  backdrop-filter:blur(12px) saturate(1.25);-webkit-backdrop-filter:blur(12px) saturate(1.25);
-  border:0;border-top:2px solid var(--accent,var(--orange));border-radius:0;
-  padding:18px 24px;
+  /* no accent — just a plain dark fade rising from the floor so the white title
+     stays readable while the photo shows clear through the middle of the panel */
+  background:linear-gradient(0deg,
+    rgba(16,19,22,.92) 0%,
+    rgba(16,19,22,.66) 50%,
+    rgba(16,19,22,0) 100%);
+  border:0;border-radius:0;
+  /* small bottom padding so the title sits right at the foot of the photo;
+     line-height:0 kills the empty line-box strut the collapsed body would
+     otherwise reserve below the title (h3 and the revealed text set their own) */
+  padding:40px 24px 14px;line-height:0;
+  transition:padding .5s var(--ease-out);
 }
 /* reserve two lines for every title so all card footer panels match height,
    whether the title runs one line or two */
-.line-card h3{font-size:1.06rem;font-weight:700;margin-bottom:0;letter-spacing:-.01em;line-height:1.2;min-height:2.4em;display:flex;align-items:flex-end}
-.line-card p{color:rgba(255,255,255,.82);font-size:.84rem;line-height:1.45;max-width:34ch}
+.line-card h3{font-size:1.2rem;font-weight:700;margin-bottom:0;letter-spacing:-.01em;line-height:1.2;display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;transition:font-size .5s var(--ease-out)}
+.line-card p{color:rgba(255,255,255,.82);font-size:.84rem;line-height:1.45;max-width:34ch;margin:0}
+/* the reveal-on-hover link adopts the card's own line accent (it only shows on
+   hover/focus, so the resting card stays accent-free) */
 .line-card .more{color:var(--accent,var(--orange));font-weight:600;font-size:.8rem;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-stamp);letter-spacing:.04em}
 
 /* progressive disclosure — at rest only the title shows; the description and
    link reveal on hover/keyboard-focus so short cards stay uncluttered */
 .line-card p,.line-card .more{
-  opacity:0;max-height:0;margin-top:0;transform:translateY(4px);overflow:hidden;
-  transition:opacity .5s var(--ease-out),max-height .55s var(--ease-out),transform .5s var(--ease-out),margin .5s var(--ease-out);
+  opacity:0;max-height:0;margin-top:0;transform:translateY(4px);overflow:hidden;line-height:0;
+  transition:opacity .5s var(--ease-out),max-height .55s var(--ease-out),transform .5s var(--ease-out),margin .5s var(--ease-out),font-size .5s var(--ease-out),line-height .5s var(--ease-out);
 }
-.line-card:hover p,.line-card:focus-within p{opacity:1;max-height:8rem;margin-top:8px;transform:none}
-.line-card:hover .more,.line-card:focus-within .more{opacity:1;max-height:3rem;margin-top:12px;transform:none}
+.line-card:hover p,.line-card:focus-within p{opacity:1;max-height:8rem;margin-top:8px;transform:none;font-size:.96rem;line-height:1.45}
+.line-card:hover .more,.line-card:focus-within .more{opacity:1;max-height:3rem;margin-top:14px;transform:none;font-size:.92rem;line-height:1.2}
+/* on hover the whole content panel grows: more padding for height, larger title.
+   the body fade also picks up the line's accent — 70% carbon, 30% accent — so the
+   panel warms toward its sector colour without losing the dark, legible base. */
+.line-card:hover .line-body,.line-card:focus-within .line-body{
+  padding:48px 28px 28px;
+  --tint:color-mix(in srgb,var(--accent,var(--orange)) 30%,#14171A 70%);
+  background:linear-gradient(0deg,
+    rgb(from var(--tint) r g b / .92) 0%,
+    rgb(from var(--tint) r g b / .66) 50%,
+    rgb(from var(--tint) r g b / 0) 100%);
+}
+.line-card:hover h3,.line-card:focus-within h3{font-size:1.5rem}
 
 /* lock the product-lines section to a single viewport: the grid flexes to
    fill the space left under the heading so rows shrink instead of overflowing. */
 /* each section fades into the next one's colour over its bottom strip, so the
    seams blend as soft gradients instead of cutting hard lines between bands */
-#productos{height:100vh;height:100dvh;min-height:0;background:linear-gradient(180deg,#fff 0%,#fff calc(100% - 220px),var(--gray-100) 100%)}
-#productos .wrap{display:flex;flex-direction:column;justify-content:center;width:100%;height:100%}
-#productos .lines-grid{flex:1 1 auto;min-height:0;margin-top:clamp(24px,3.5vh,52px)}
-/* higher specificity than .reveal so the accordion's flex-grow actually
-   animates, while still honoring the entrance reveal (opacity/transform/filter) */
-#productos .line-card{
-  min-height:0;
-  transition:flex-grow .6s var(--ease-out),box-shadow .45s var(--ease-out),
-             opacity .7s var(--ease-out),transform .7s var(--ease-out),filter .7s var(--ease-out);
+/* the accordion is a full-bleed sector strip pinned to the hero floor: rather
+   than stretching to fill the floor, it sits at its natural height at the
+   bottom (align-self:end), so the slack in its grid row becomes breathing room
+   between the hero text and the strip. */
+/* vertical accordion: the horizontal strip rotated 90° into the right half.
+   pinned to the section's right edge so it bleeds to the screen edge and runs
+   the full hero height (the fixed header rides over its top). four stacked photo
+   panels share the height; the hovered one grows and its siblings yield. */
+.hero-lines{
+  position:absolute;top:0;right:0;bottom:0;z-index:1;
+  width:50vw;flex-direction:column;gap:0;margin:0;
+}
+/* only relax min-height here — the base .line-card already sets flex:1 1 0, and
+   re-declaring flex-grow at this specificity would beat the :hover/:focus-within
+   grow rule (same weight, declared later) and kill the accordion expansion */
+.hero-lines .line-card{min-height:0}
+/* full-height media column — keep every corner square so it reads as one band */
+@media(min-width:961px){
+  .hero-lines>.line-card:first-child,
+  .hero-lines>.line-card:last-child{border-radius:0}
 }
 
 /* ---------- ABOUT ---------- */
@@ -328,9 +358,8 @@ section{padding:var(--section-y) 0}
 
 /* ---------- CATALOG ---------- */
 /* the brands band stays solid peach to its edge; its colour bleeds DOWN into the
-   top of this section, then white holds before easing into the dark coverage band
-   (that bottom fade stays within the section padding so the rows keep clean white) */
-#equipos{background:linear-gradient(180deg,#FFE3CE 0%,#fff 72px,#fff calc(100% - 130px),var(--carbon) 100%)}
+   top of this section, then white holds before easing into the light coverage band */
+#equipos{background:linear-gradient(180deg,#FFE3CE 0%,#fff 72px,#fff calc(100% - 130px),var(--gray-100) 100%)}
 .equip{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:46px 0}
 .equip:not(:last-child){border-bottom:1px solid var(--gray-200)}
 .equip.reverse .equip-img{order:2}
@@ -347,9 +376,49 @@ section{padding:var(--section-y) 0}
 .spec .k{font-family:var(--font-stamp);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);font-weight:600}
 .spec .v{font-family:var(--font-stamp);font-size:1.1rem;font-weight:600;margin-top:5px;font-variant-numeric:tabular-nums;color:var(--carbon)}
 
+/* ---------- AFTER-SALES (Soporte Postventa) ---------- */
+/* sits on the same light grey as the catalog floor and the coverage top, so the
+   seams stay invisible. five stages strung on one track, ramped red→gold. */
+.aftersales{background:var(--gray-100);color:var(--carbon)}
+/* editorial two-column: sticky narrative on the left, the five support
+   pillars stacked as hairline-divided rows on the right */
+.as-grid{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(40px,6vw,90px);align-items:start}
+.as-intro{position:sticky;top:118px}
+.as-intro .btn{margin-top:30px}
+
+.pillars{list-style:none;display:flex;flex-direction:column}
+.pillar{display:flex;gap:22px;align-items:flex-start;padding:24px 0;border-top:1px solid var(--gray-200)}
+.pillar:first-child{border-top:0;padding-top:0}
+/* icon chip: soft gradient of the stage colour, matching the old hex nodes */
+.picon{
+  flex:0 0 auto;width:56px;height:56px;display:grid;place-items:center;border-radius:var(--r-md);
+  background:linear-gradient(155deg,
+    color-mix(in srgb,var(--pv) 82%,#fff),
+    var(--pv) 60%,
+    color-mix(in srgb,var(--pv) 70%,var(--carbon)));
+}
+.picon svg{width:27px;height:27px;stroke:#fff}
+.pbody{padding-top:3px}
+.plabel{font-family:var(--font-stamp);font-weight:700;font-size:1.04rem;letter-spacing:.005em;color:var(--carbon);margin:0;line-height:1.2}
+.pdesc{margin-top:7px;color:var(--slate-500);font-size:.95rem;line-height:1.55;max-width:46ch}
+
+@media(max-width:960px){
+  /* stack: narrative on top (no longer sticky), pillars below */
+  .as-grid{grid-template-columns:1fr;gap:36px}
+  .as-intro{position:static}
+}
+@media(max-width:640px){
+  .pillar{gap:16px;padding:20px 0}
+  .picon{width:48px;height:48px}
+  .picon svg{width:23px;height:23px}
+}
+
 /* ---------- COVERAGE + STATS ---------- */
-/* banda clara: la imagen del mapa (fondo blanco) se integra sin halos */
-.coverage{background:var(--gray-100);color:var(--carbon)}
+/* banda clara: la imagen del mapa (fondo blanco) se integra sin halos.
+   en su franja inferior vacía (por debajo del contenido) el gris se funde al
+   blanco de la sección de contacto, así la unión entre ambas es un degradado
+   entre los dos fondos en vez de un corte. */
+.coverage{background:linear-gradient(180deg,var(--gray-100) 0%,var(--gray-100) calc(100% - 100px),#fff 100%);color:var(--carbon)}
 .coverage .section-title{color:var(--carbon)}
 .coverage .eyebrow{color:var(--orange)}
 .cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}
@@ -367,27 +436,63 @@ section{padding:var(--section-y) 0}
 .branch .dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
 
 /* ---------- CTA + FOOTER ---------- */
-.cta{position:relative;overflow:hidden;background:var(--carbon);color:#fff;text-align:center;padding:clamp(56px,7vw,84px) 0}
-.cta::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 1px,transparent 1px 30px),radial-gradient(circle at 50% -40%,rgba(242,106,27,.40),transparent 58%)}
+/* la CTA arranca en el MISMO gris claro de la sección anterior y se funde a
+   carbón con una curva suavizada (smoothstep): sale del claro con pendiente casi
+   nula —sin arista hacia el blanco— y llega al carbón igual de suave, todo dentro
+   de su padding superior. La costura es gris=gris, sin línea. */
+/* sección de contacto en CLARO: arranca en el gris de la sección anterior y
+   aclara a blanco (mezcla suave arriba) y se mantiene claro hasta abajo; la
+   transición hacia el footer la resuelve la sombra superior del propio footer. */
+.cta{
+  position:relative;overflow:hidden;color:var(--carbon);text-align:center;
+  padding:clamp(64px,7vw,96px) 0 clamp(90px,11vw,140px);
+  background:#fff;
+}
 .cta .wrap{position:relative;z-index:1}
 .cta .eyebrow{color:var(--orange);justify-content:center}
 .cta h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.02em}
-.cta p{margin:18px auto 0;max-width:56ch;color:rgba(255,255,255,.84);font-size:1.08rem}
-.cta-form{margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.cta-form input{font-family:var(--font-body);padding:15px 18px;border-radius:var(--r-sm);border:2px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;min-width:300px;font-size:.95rem;transition:border-color .2s,background .2s}
-.cta-form input::placeholder{color:rgba(255,255,255,.5)}
-.cta-form input:focus{border-color:var(--orange);background:rgba(255,255,255,.10)}
-.cta-form input.invalid{border-color:#ff7a4d;background:rgba(255,122,77,.10)}
+.cta p{margin:18px auto 0;max-width:56ch;color:var(--slate-500);font-size:1.08rem}
+/* la propia form ES el campo: una píldora blanca que contiene el input sin borde
+   y el botón anidado a la derecha, dentro del mismo recuadro */
+.cta-form{
+  margin:32px auto 0;width:100%;max-width:540px;
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:2px solid var(--gray-200);border-radius:var(--r-pill);
+  padding:6px 6px 6px 8px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.cta-form:focus-within{border-color:var(--orange);box-shadow:0 0 0 4px rgba(242,106,27,.14)}
+.cta-form:has(input.invalid){border-color:#E5533D;box-shadow:0 0 0 4px rgba(229,83,61,.12)}
+.cta-form input{
+  flex:1 1 auto;min-width:0;
+  font-family:var(--font-body);font-size:.98rem;color:var(--carbon);
+  background:transparent;border:0;outline:none;padding:13px 6px 13px 14px;
+}
+.cta-form input::placeholder{color:var(--gray-400)}
+/* botón anidado: compacto, con micro-movimiento al pasar el cursor */
+.cta-form .btn{flex:0 0 auto;padding:11px 12px 11px 22px;transition:transform .28s var(--ease),box-shadow .28s var(--ease),background .28s var(--ease)}
+.cta-form .btn:hover{transform:none;box-shadow:var(--shadow-glow)}
+/* el disco-flecha crece y se desliza, y la flecha hace un guiño al entrar */
+.cta-form .btn .ico{transition:transform .3s var(--ease),background .25s ease}
+.cta-form .btn:hover .ico{transform:translateX(4px) scale(1.08)}
+.cta-form .btn:hover .ico svg{animation:arrowNudge .6s var(--ease)}
+@keyframes arrowNudge{0%{transform:translateX(0)}40%{transform:translateX(3px)}70%{transform:translateX(-1px)}100%{transform:translateX(0)}}
+.cta-form .btn:active{transform:scale(.97)}
 .form-msg{margin-top:18px;font-size:.92rem;font-weight:600;min-height:1.2em}
-.form-msg.ok{color:#fff}
-.form-msg.err{color:#ffb59c}
-footer{background:var(--carbon);color:var(--gray-400);padding:72px 0 36px;border-top:1px solid rgba(255,255,255,.08)}
+.form-msg.ok{color:var(--carbon)}
+.form-msg.err{color:#C0392B}
+/* el degradado inferior de la CTA ya entrega el carbón; sin borde superior, la
+   costura entre el degradado y el relleno sólido queda invisible */
+footer{
+  position:relative;z-index:1;
+  background:var(--carbon);color:var(--gray-400);padding:72px 0 36px;border-top:0;
+}
 .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px}
 footer h4{color:#fff;font-family:var(--font-stamp);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
 footer a,footer p{font-size:.9rem;color:var(--gray-400);margin-bottom:11px;display:block}
 footer a{transition:color .2s}
 footer a:hover{color:var(--orange)}
-.foot-logo{display:block;width:auto;height:42px;color:#fff;margin-bottom:16px}
+.foot-logo{display:block;width:auto;height:96px;color:#fff;margin-bottom:16px}
 .socials{display:flex;gap:12px;margin-top:18px}
 .socials a{width:40px;height:40px;border-radius:var(--r-sm);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;transition:border-color .2s,transform .2s var(--ease)}
 .socials svg{width:18px;height:18px;stroke:var(--gray-400);transition:stroke .2s}
@@ -397,7 +502,9 @@ footer a:hover{color:var(--orange)}
 
 /* scroll progress · scroll-spy · back-to-top */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--orange);z-index:70;transition:width .08s linear}
+/* transparent header (over the dark hero): active link stays white */
 .nav-links a.active{color:#fff}
+/* solid header (white bar on scroll): active link goes dark */
 header.scrolled .nav-links a.active{color:var(--carbon)}
 .nav-links a.active::after{width:100%}
 .to-top{
@@ -497,17 +604,102 @@ header.scrolled .nav-links a.active{color:var(--carbon)}
 .photo-tab::before{top:100%;left:0}
 
 
+/* ============================================================
+   DELIGHT — engineered micro-moments (refined, not playful)
+   Every entrance/loop is gated behind prefers-reduced-motion:no-preference;
+   the resting state is always the finished, fully legible page.
+   1 · hero load choreography + forge-breathe + accent ignite
+   2 · drawn-checkmark form success (the lead-gen reward)
+   3 · counter "lock-in" tick underline
+   4 · logo-bolt charge on hover (the brand's bolt = energy)
+   5 · live coverage pings on the branch dots
+   ============================================================ */
+
+/* 1 · HERO — one orchestrated page-load, then it settles ------------------- */
+/* The default (no-JS / hidden-tab / reduced-motion) state is the FINISHED,
+   fully-visible hero. The entrance is opt-in: an inline head script adds
+   `.hero-anim` to <html> before first paint, but ONLY when the tab is visible
+   and motion is allowed — so the hero can never ship blank if animations don't
+   run, and there's no hide-then-reveal flash. */
+@media(prefers-reduced-motion:no-preference){
+  /* the content rises in sequence: mark → headline → lead → actions → cue */
+  .hero-anim .hero-content>*{opacity:0;animation:heroRise .85s var(--ease-out) both}
+  .hero-anim .hero-logo{animation-delay:.05s}
+  .hero-anim .hero h1{animation-delay:.18s}
+  .hero-anim .hero p{animation-delay:.34s}
+  .hero-anim .hero-actions{animation-delay:.48s}
+  .hero-anim .scroll-cue{animation-delay:.62s}
+  /* the sector band slides up under the fold a beat later */
+  .hero-anim .hero-lines{opacity:0;animation:heroRise .95s var(--ease-out) both;animation-delay:.5s}
+  /* the key phrase stays neutral, then the orange "ignites" once it lands */
+  .hero-anim .hero h1 .accent{color:#fff;animation:accentIgnite .55s var(--ease-out) .92s forwards}
+  /* the forge glow breathes, slow and barely perceptible (static fallback is fine) */
+  .hero-bg::after{animation:forgeBreathe 9s ease-in-out 1.2s infinite}
+}
+@keyframes heroRise{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes accentIgnite{from{color:#fff}to{color:var(--orange)}}
+@keyframes forgeBreathe{0%,100%{opacity:.84}50%{opacity:1}}
+
+/* 4 · LOGO BOLT — a quick charge on hover (orange = the brand's energy) ----- */
+.logo .mlogo,.foot-logo{transition:filter .4s var(--ease)}
+@media(prefers-reduced-motion:no-preference){
+  .logo:hover .mlogo,.foot-logo:hover{animation:boltCharge .65s var(--ease-out)}
+}
+@keyframes boltCharge{
+  0%{filter:drop-shadow(0 0 0 rgba(242,106,27,0))}
+  35%{filter:drop-shadow(0 0 6px rgba(242,106,27,.78)) brightness(1.07)}
+  100%{filter:drop-shadow(0 0 0 rgba(242,106,27,0))}
+}
+
+/* 3 · STAT COUNTERS — an orange tick locks in under the number on finish ---- */
+.stat .num{display:inline-block;position:relative}
+.stat .num::after{
+  content:"";position:absolute;left:0;right:0;bottom:-9px;height:2px;
+  background:var(--orange);transform:scaleX(0);transform-origin:left;
+  transition:transform .5s var(--ease-out);
+}
+.stat .num.done::after{transform:scaleX(1)}
+
+/* 5 · BRANCH DOTS — live coverage pings, staggered like sequential signals -- */
+.branch .dot{position:relative}
+.branch .dot::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:var(--orange);opacity:0;
+}
+@media(prefers-reduced-motion:no-preference){
+  .branch .dot::after{animation:branchPing 2.8s var(--ease-out) infinite}
+  .branches .branch:nth-of-type(2) .dot::after{animation-delay:.7s}
+  .branches .branch:nth-of-type(3) .dot::after{animation-delay:1.4s}
+  .branches .branch:nth-of-type(4) .dot::after{animation-delay:2.1s}
+}
+@keyframes branchPing{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(3.4);opacity:0}}
+
+/* 2 · FORM SUCCESS — a drawn checkmark badge confirms the request ---------- */
+.form-msg .check-draw{
+  display:inline-grid;place-items:center;vertical-align:-.3em;
+  width:1.4em;height:1.4em;margin-right:.55em;border-radius:50%;
+  background:var(--orange);
+}
+.form-msg .check-draw svg{width:.82em;height:.82em;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+/* resting state is the fully-drawn check, so reduced-motion still shows it */
+.form-msg .check-draw path{stroke-dasharray:30;stroke-dashoffset:0}
+@media(prefers-reduced-motion:no-preference){
+  .form-msg.ok .check-draw{animation:badgePop .5s var(--ease-out) both}
+  .form-msg.ok .check-draw path{stroke-dashoffset:30;animation:checkDraw .5s var(--ease-out) .13s forwards}
+}
+@keyframes badgePop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+@keyframes checkDraw{to{stroke-dashoffset:0}}
+
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:960px){
-  /* accordion doesn't suit touch/narrow widths: stack into full-width cards
-     with the info always visible, and release the single-viewport lock. */
-  #productos{height:auto;min-height:0}
-  #productos .wrap{height:auto}
-  .lines-grid{flex-direction:column;gap:14px}
-  .line-card{flex:1 1 auto;min-height:208px;border-radius:var(--r-lg)}
-  .line-card p,.line-card .more{opacity:1;max-height:none;margin-top:8px;transform:none;overflow:visible}
-  .line-card .more{margin-top:12px}
-  .hero-inner{min-height:100vh;min-height:100dvh;padding:96px 0 0;gap:clamp(18px,2.6vh,32px)}
+  /* stack: copy on top, accordion below in normal flow (it leaves the absolute
+     right-column anchor). it can't hover-expand on touch, so lay the four
+     sectors out as a 2×2 grid. */
+  .hero-inner{grid-template-columns:1fr;min-height:0;padding:112px 0 0;gap:0}
+  .hero-content{text-align:center;padding:0}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-lines{position:static;width:auto;height:auto;flex-direction:row;flex-wrap:wrap;align-content:stretch;margin:0;gap:10px;padding:clamp(24px,5vh,40px) 24px clamp(28px,6vh,48px)}
+  .hero-lines .line-card{flex:1 1 44%;min-height:clamp(132px,20vh,170px);border-radius:var(--r-lg)}
   .about-grid,.cov-grid{grid-template-columns:1fr;gap:40px}
   .about-photos{height:340px}
   .equip,.equip.reverse{grid-template-columns:1fr;gap:28px}
@@ -531,9 +723,6 @@ header.scrolled .nav-links a.active{color:var(--carbon)}
   .specs{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:1fr}
-  .cta-form input{min-width:0;width:100%}
-  /* keep the four-up full-bleed strip; just compact the labels so they fit */
-  .medium{min-height:96px;padding:12px}
-  .m-label{font-size:.72rem}
-  .m-sub{display:none}
+  /* la píldora ya es fluida; sólo compactamos el botón anidado para que quepa */
+  .cta-form .btn{padding:10px 10px 10px 16px;font-size:.88rem;gap:6px}
 }

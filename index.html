@@ -16,6 +16,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<script>
+  /* Opt into the hero entrance before first paint — but only when the tab is
+     visible and motion is allowed. Otherwise the hero stays in its finished,
+     fully-visible state, so it can never ship blank and there's no flash. */
+  (function(){try{
+    if(document.visibilityState==='hidden')return;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    document.documentElement.classList.add('hero-anim');
+  }catch(e){}})();
+</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -51,88 +61,40 @@
   <div class="hero-bg"></div>
   <div class="wrap hero-inner">
     <div class="hero-content">
-      <svg class="hero-logo mlogo" viewBox="0 0 1392 545" role="img" aria-label="Maquinarias Mega"><use href="#megaLogo"/></svg>
       <h1>Equipos que mueven <span class="accent">la industria de Venezuela</span></h1>
       <p>Venta, distribución y soporte de maquinaria pesada para construcción, minería y manejo de carga. Tecnología de clase mundial con respaldo técnico nacional.</p>
-      <div class="hero-actions">
-        <a href="#productos" class="btn btn-outline">Ver líneas de producto<span class="ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-        <a href="#contacto" class="btn btn-primary">Hablar con un asesor<span class="ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      </div>
-      <a class="scroll-cue" href="#productos" aria-label="Desliza para ver nuestras líneas de producto">
-        <span class="sc-text">Conoce nuestras líneas</span>
-        <span class="sc-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-      </a>
     </div>
-    <nav class="hero-mediums" aria-label="Nuestros sectores">
-      <a class="medium" href="#productos" style="background-image:url('assets/img/operacion-obra-komatsu-d155.jpg')">
-        <span class="m-body">
-          <span class="m-label">Construcción</span>
-          <span class="m-sub">Obra y movimiento de tierra</span>
-        </span>
-      </a>
-      <a class="medium" href="#productos" style="background-image:url('assets/img/komatsu-930e-camion-minero.jpg')">
-        <span class="m-body">
-          <span class="m-label">Minería</span>
-          <span class="m-sub">Superficie y subterránea</span>
-        </span>
-      </a>
-      <a class="medium" href="#productos" style="background-image:url('assets/img/grua-demag-ac100.jpg')">
-        <span class="m-body">
-          <span class="m-label">Elevación y Carga</span>
-          <span class="m-sub">Grúas y manejo de carga</span>
-        </span>
-      </a>
-      <a class="medium" href="#productos" style="background-image:url('assets/img/taller-servicio-mega.jpg')">
-        <span class="m-body">
-          <span class="m-label">Soporte</span>
-          <span class="m-sub">Servicio y postventa</span>
-        </span>
-      </a>
-    </nav>
   </div>
-</section>
-
-<!-- ============ PRODUCT LINES ============ -->
-<section id="productos">
-  <div class="wrap">
-    <span class="eyebrow">Líneas de producto</span>
-    <h2 class="section-title reveal">Soluciones integrales para cada operación</h2>
-    <p class="lead reveal">Cuatro macro-líneas que cubren el ciclo completo del equipo: desde la adquisición hasta el soporte postventa.</p>
-    <div class="lines-grid">
-      <div class="line-card reveal" style="background-image:url('assets/img/komatsu-wa1200-cargador.jpg');--accent:var(--line-construccion)">
-        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 18h18M5 18V9l4-3 5 3v9M9 18v-4h4v4"/></svg></div>
+  <nav class="lines-grid hero-lines" id="productos" aria-label="Líneas de producto">
+      <a class="line-card" href="#equipos" style="background-image:url('assets/img/komatsu-wa1200-cargador.jpg');--accent:var(--line-construccion)">
         <div class="line-body">
           <h3>Construcción y Minería</h3>
           <p>Excavadoras, cargadores, dozers, motoniveladoras y camiones para superficie y subterránea.</p>
           <span class="more">Ver equipos →</span>
         </div>
-      </div>
-      <div class="line-card reveal" style="background-image:url('assets/img/grua-demag-ac100.jpg');--accent:var(--line-elevacion)">
-        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 21V7l8-4 8 4v14M9 21v-6h6v6M12 3v4"/></svg></div>
+      </a>
+      <a class="line-card" href="#equipos" style="background-image:url('assets/img/grua-demag-ac100.jpg');--accent:var(--line-elevacion)">
         <div class="line-body">
           <h3>Elevación y Manejo de Carga</h3>
           <p>Grúas articuladas, plataformas elevadoras y montacargas para logística y obra.</p>
           <span class="more">Ver equipos →</span>
         </div>
-      </div>
-      <div class="line-card reveal" style="background-image:url('assets/img/telehandler-dieci-hercules.jpg');--accent:var(--line-accesorios)">
-        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+      </a>
+      <a class="line-card" href="#equipos" style="background-image:url('assets/img/telehandler-dieci-hercules.jpg');--accent:var(--line-accesorios)">
         <div class="line-body">
           <h3>Accesorios, Componentes y Aditamentos</h3>
           <p>Implementos, repuestos originales y componentes para extender la vida útil del equipo.</p>
           <span class="more">Ver catálogo →</span>
         </div>
-      </div>
-      <div class="line-card reveal" style="background-image:url('assets/img/taller-servicio-mega.jpg');--accent:var(--line-postventa)">
-        <div class="line-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 7l3 3M3 21l4-1 11-11a2 2 0 0 0 0-3l0 0a2 2 0 0 0-3 0L4 14 3 21z"/></svg></div>
+      </a>
+      <a class="line-card" href="#equipos" style="background-image:url('assets/img/taller-servicio-mega.jpg');--accent:var(--line-postventa)">
         <div class="line-body">
           <h3>Soporte Postventa</h3>
           <p>Mantenimiento, servicio técnico, garantía y la Escuela Técnica Mega de capacitación.</p>
           <span class="more">Conocer más →</span>
         </div>
-      </div>
-    </div>
-  </div>
+      </a>
+  </nav>
 </section>
 
 <!-- ============ ABOUT ============ -->
@@ -269,6 +231,55 @@
   </div>
 </section>
 
+<!-- ============ AFTER-SALES (Soporte Postventa) ============ -->
+<section class="aftersales" id="postventa">
+  <div class="wrap as-grid">
+    <div class="as-intro">
+      <span class="eyebrow">Soporte postventa</span>
+      <h2 class="section-title reveal">El respaldo no termina con la entrega</h2>
+      <p class="lead reveal">Acompañamos cada equipo durante toda su vida útil — del repuesto original al monitoreo satelital de tu flota.</p>
+      <a class="btn btn-ghost reveal" href="#contacto">Habla con un asesor<span class="ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <ul class="pillars">
+      <li class="pillar reveal" style="--pv:var(--pv-repuestos)">
+        <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+        <div class="pbody">
+          <h3 class="plabel">Repuestos</h3>
+          <p class="pdesc">Piezas originales, despacho de partes y asistencia en la selección.</p>
+        </div>
+      </li>
+      <li class="pillar reveal" style="--pv:var(--pv-servicio)">
+        <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l3 3M3 21l4-1 11-11a2 2 0 0 0 0-3a2 2 0 0 0-3 0L4 14 3 21z"/></svg></span>
+        <div class="pbody">
+          <h3 class="plabel">Servicio técnico especializado</h3>
+          <p class="pdesc">Técnicos especializados y capacitados por nuestros fabricantes.</p>
+        </div>
+      </li>
+      <li class="pillar reveal" style="--pv:var(--pv-entrenamiento)">
+        <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        <div class="pbody">
+          <h3 class="plabel">Entrenamiento</h3>
+          <p class="pdesc">Escuela Técnica Mega y cursos personalizados para tu equipo.</p>
+        </div>
+      </li>
+      <li class="pillar reveal" style="--pv:var(--pv-garantia)">
+        <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div class="pbody">
+          <h3 class="plabel">Garantía de fabricantes</h3>
+          <p class="pdesc">Respaldo de la calidad de nuestros servicios y de cada entrega.</p>
+        </div>
+      </li>
+      <li class="pillar reveal" style="--pv:var(--pv-monitoreo)">
+        <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg></span>
+        <div class="pbody">
+          <h3 class="plabel">Monitoreo satelital</h3>
+          <p class="pdesc">Sistema de seguimiento de flotas en equipos Komatsu.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ COVERAGE + STATS ============ -->
 <section class="coverage" id="cobertura">
   <div class="wrap cov-grid">
@@ -304,7 +315,7 @@
     <p>Cuéntanos qué necesitas y un asesor técnico te contactará con la solución adecuada.</p>
     <form class="cta-form" id="ctaForm" novalidate>
       <input type="email" id="ctaEmail" placeholder="tu@correo.com" aria-label="Correo electrónico" autocomplete="email" required>
-      <button class="btn btn-light" type="submit">Solicitar contacto<span class="ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <button class="btn btn-primary" type="submit">Solicitar contacto<span class="ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
     </form>
     <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
   </div>

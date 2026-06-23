@@ -25,7 +25,8 @@ function animateCounter(el) {
     const p = Math.min((now - start) / dur, 1);
     const eased = 1 - Math.pow(1 - p, 3);
     el.textContent = Math.floor(eased * target).toLocaleString('es') + suffix;
-    if (p < 1) requestAnimationFrame(tick);
+    if (p < 1) { requestAnimationFrame(tick); }
+    else { el.textContent = target.toLocaleString('es') + suffix; el.classList.add('done'); }
   }
   requestAnimationFrame(tick);
 }
@@ -50,7 +51,8 @@ form.addEventListener('submit', (e) => {
     return;
   }
   emailInput.classList.remove('invalid');
-  msg.textContent = 'Gracias. Un asesor técnico te contactará pronto.';
+  // confirmación con check dibujado (el momento de conversión merece un acuse)
+  msg.innerHTML = '<span class="check-draw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Gracias. Un asesor técnico te contactará pronto.';
   msg.className = 'form-msg ok';
   form.reset();
 });
